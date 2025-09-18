@@ -1017,7 +1017,7 @@ _Développé avec passion pour améliorer la mobilité urbaine à Ouagadougou et
 ---
 
 **🔗 Liens Rapides :**  
-[🎥 Vidéo Démo Lassina](https://youtube.com/watch?v=votre-lien-1) | [🎥 Vidéo Démo Abdourazakou](https://youtube.com/watch?v=votre-lien-2) | [📊 Rapport PDF](docs/rapport_final.pdf) | [🗺️ Carte Interactive](web/carte_interactive.html) | [🌐 API Docs](http://127.0.0.1:8081)
+[🎥 Vidéo Démo Lassina](https://youtube.com/watch?v=votre-lien-1) | [🎥 Vidéo Démo Abdourazakou](https://youtube.com/watch?v=votre-lien-2) | [📊 Rapport PDF](docs/rapport/rapport_final.pdf) | [🗺️ Carte Interactive](web/carte_interactive.html) | [🌐 API Docs](http://127.0.0.1:8081)
 
 ---
 
