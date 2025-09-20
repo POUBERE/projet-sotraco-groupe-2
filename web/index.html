@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOTRACO Dashboard</title>
+    <style>
+        /* Reset et configuration de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* En-tête principal */
+        .header {
+            background: linear-gradient(135deg, #2e8b57, #32cd32);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Barre de navigation */
+        .nav {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            background: #2e8b57;
+            color: white;
+            border-color: #2e8b57;
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Gestion des sections */
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+
+        /* Barre d'état de l'API */
+        .status-bar {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Grille des statistiques */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Cartes de statistiques */
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2e8b57;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cartes de contenu */
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        /* Boutons principaux */
+        .btn {
+            background: #2e8b57;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #256d44;
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Liste des endpoints API */
+        .endpoint-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .endpoint-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        /* Badges des méthodes HTTP */
+        .method {
+            background: #28a745;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .endpoint-item code {
+            background: #e9ecef;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-family: monospace;
+            flex: 1;
+        }
+
+        /* Zone d'affichage des réponses API */
+        .api-response {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #e9ecef;
+            margin-top: 1rem;
+        }
+
+        /* États visuels */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚌 SOTRACO Dashboard</h1>
+        <p>Système d'Optimisation du Transport Public - Ouagadougou</p>
+    </div>
+
+    <nav class="nav">
+        <button class="nav-btn active" onclick="showSection('dashboard')">
+            📊 Dashboard
+        </button>
+        <button class="nav-btn" onclick="showSection('predictions')">
+            🔮 Prédictions
+        </button>
+        <button class="nav-btn" onclick="showSection('api')">
+            🌐 API
+        </button>
+        <button class="nav-btn" onclick="showSection('carte')">
+            🗺️ Carte
+        </button>
+    </nav>
+
+    <div class="container">
+        <div class="status-bar">
+            <div class="status-indicator">
+                <span>État API:</span>
+                <span id="apiStatus">⏸️ Vérification...</span>
+            </div>
+            <button onclick="testAPIConnection()" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                Tester Connexion
+            </button>
+        </div>
+
+        <!-- Section Dashboard -->
+        <section id="dashboard" class="section active">
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalArrets">-</div>
+                    <div>Arrêts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalLignes">-</div>
+                    <div>Lignes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalPredictions">-</div>
+                    <div>Prédictions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalFrequentation">-</div>
+                    <div>Données Fréquentation</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>Résumé du Système</h2>
+                <div id="systemSummary">
+                    <p>Chargement des informations système...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Prédictions -->
+        <section id="predictions" class="section">
+            <div class="content-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Prédictions de Demande</h2>
+                    <button class="btn" onclick="generatePredictions()" id="predictBtn">
+                        Générer Prédictions
+                    </button>
+                </div>
+                <div id="predictionsContent">
+                    <p>Cliquez sur "Générer Prédictions" pour lancer l'analyse prédictive sur 7 jours.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section API -->
+        <section id="api" class="section">
+            <div class="content-card">
+                <h2>API REST SOTRACO</h2>
+                <p>Interface de programmation pour accéder aux données SOTRACO</p>
+
+                <h3 style="margin-top: 2rem;">Endpoints Disponibles</h3>
+                <div class="endpoint-list">
+                    <div class="endpoint-item">
+                        <span class="method">GET</span>
+                        <code>/api/status</code>
+                        <button onclick="testEndpoint('/api/status')" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">
+                            Tester
+                        </button>
+                    </div>
+                    <div class="endpoint-item">
+                        <span class="method">GET</span>
+                        <code>/api/arrets</code>
+                        <button onclick="testEndpoint('/api/arrets')" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">
+                            Tester
+                        </button>
+                    </div>
+                    <div class="endpoint-item">
+                        <span class="method">GET</span>
+                        <code>/api/lignes</code>
+                        <button onclick="testEndpoint('/api/lignes')" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">
+                            Tester
+                        </button>
+                    </div>
+                    <div class="endpoint-item">
+                        <span class="method">POST</span>
+                        <code>/api/predictions/generer</code>
+                        <button onclick="testEndpoint('/api/predictions/generer', 'POST')" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">
+                            Tester
+                        </button>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Réponse API</h3>
+                <div class="api-response" id="apiResponse">
+                    Aucune requête effectuée
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Carte -->
+        <section id="carte" class="section">
+            <div class="content-card">
+                <h2>Carte Interactive du Réseau</h2>
+                <p>La carte interactive a été générée et est disponible dans le fichier:</p>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
+                    <code>web/carte_interactive.html</code>
+                </div>
+                <p>Ouvrez ce fichier dans votre navigateur pour visualiser la carte complète avec:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Localisation de tous les arrêts</li>
+                    <li>Tracé des lignes de bus</li>
+                    <li>Informations interactives sur chaque élément</li>
+                    <li>Contrôles de filtrage par ligne</li>
+                </ul>
+                <button onclick="openCarteFile()" class="btn">
+                    Instructions d'Ouverture
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Configuration de l'API
+        const API_BASE_URL = "http://127.0.0.1:8081";
+        let apiConnected = false;
+
+        // Initialisation au chargement de la page
+        document.addEventListener("DOMContentLoaded", function () {
+            testAPIConnection();
+        });
+
+        /**
+         * Gestion de la navigation entre les sections
+         * @param {string} sectionId - Identifiant de la section à afficher
+         */
+        function showSection(sectionId) {
+            // Désactiver toutes les sections
+            document.querySelectorAll(".section").forEach((section) => {
+                section.classList.remove("active");
+            });
+
+            // Désactiver tous les boutons de navigation
+            document.querySelectorAll(".nav-btn").forEach((btn) => {
+                btn.classList.remove("active");
+            });
+
+            // Activer la section et le bouton correspondants
+            document.getElementById(sectionId).classList.add("active");
+            event.target.classList.add("active");
+
+            // Chargement conditionnel des données
+            if (sectionId === "dashboard" && apiConnected) {
+                loadDashboardData();
+            }
+        }
+
+        /**
+         * Test de la connexion à l'API backend
+         */
+        async function testAPIConnection() {
+            const statusEl = document.getElementById("apiStatus");
+
+            try {
+                statusEl.textContent = "🔄 Test en cours...";
+                const response = await fetch(`${API_BASE_URL}/api/status`, {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/json",
+                    },
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    apiConnected = true;
+                    statusEl.innerHTML = "✅ Connecté";
+                    statusEl.className = "success";
+
+                    // Chargement automatique des données du dashboard
+                    if (document.getElementById("dashboard").classList.contains("active")) {
+                        loadDashboardData();
+                    }
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                apiConnected = false;
+                statusEl.innerHTML = "❌ Déconnecté";
+                statusEl.className = "error";
+                console.error("Erreur connexion API:", error);
+            }
+        }
+
+        /**
+         * Chargement des données statistiques pour le dashboard
+         */
+        async function loadDashboardData() {
+            if (!apiConnected) return;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/status`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.data.statistiques;
+                    
+                    // Mise à jour des compteurs
+                    document.getElementById("totalArrets").textContent = stats.nombre_arrets;
+                    document.getElementById("totalLignes").textContent = stats.nombre_lignes;
+                    document.getElementById("totalPredictions").textContent = stats.nombre_predictions;
+                    document.getElementById("totalFrequentation").textContent = stats.nombre_frequentation;
+
+                    // Génération du résumé système
+                    const summary = `
+                        <h3>État du Système SOTRACO</h3>
+                        <p><strong>Version:</strong> ${data.data.version}</p>
+                        <p><strong>Statut:</strong> ${data.data.statut}</p>
+                        <p><strong>Données chargées:</strong> ${stats.donnees_chargees ? "Oui" : "Non"}</p>
+                        <p><strong>API active:</strong> ${stats.api_active ? "Oui" : "Non"}</p>
+                        <p><strong>Dernière mise à jour:</strong> ${new Date(data.data.timestamp).toLocaleString("fr-FR")}</p>
+                    `;
+                    document.getElementById("systemSummary").innerHTML = summary;
+                }
+            } catch (error) {
+                console.error("Erreur chargement dashboard:", error);
+            }
+        }
+
+        /**
+         * Génération des prédictions de demande
+         */
+        async function generatePredictions() {
+            if (!apiConnected) {
+                alert("API non connectée. Testez la connexion d'abord.");
+                return;
+            }
+
+            const button = document.getElementById("predictBtn");
+            const content = document.getElementById("predictionsContent");
+
+            // État de chargement
+            button.disabled = true;
+            button.textContent = "Génération en cours...";
+            content.innerHTML = "<p>🔄 Génération des prédictions en cours...</p>";
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/predictions/generer`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        horizon_jours: 7,
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const result = data.data;
+                    content.innerHTML = `
+                        <div class="success">✅ Prédictions générées avec succès!</div>
+                        <h3>Résumé</h3>
+                        <ul>
+                            <li><strong>Horizon:</strong> ${result.horizon_jours} jours</li>
+                            <li><strong>Lignes analysées:</strong> ${result.lignes_predites}</li>
+                            <li><strong>Total prédictions:</strong> ${result.total_predictions}</li>
+                        </ul>
+                        <h3>Détails par ligne</h3>
+                        <div style="max-height: 300px; overflow-y: auto;">
+                            ${result.resume.predictions_par_ligne
+                                .map(
+                                    (ligne) =>
+                                        `<div style="padding: 0.5rem; border-bottom: 1px solid #eee;">
+                                            <strong>${ligne.ligne_nom}</strong>: ${ligne.nombre_predictions} prédictions
+                                        </div>`
+                                )
+                                .join("")}
+                        </div>
+                    `;
+                } else {
+                    throw new Error(data.message || "Erreur inconnue");
+                }
+            } catch (error) {
+                content.innerHTML = `<div class="error">❌ Erreur: ${error.message}</div>`;
+            } finally {
+                button.disabled = false;
+                button.textContent = "Générer Prédictions";
+            }
+        }
+
+        /**
+         * Test d'un endpoint spécifique de l'API
+         * @param {string} endpoint - L'endpoint à tester
+         * @param {string} method - La méthode HTTP (GET, POST, etc.)
+         */
+        async function testEndpoint(endpoint, method = "GET") {
+            if (!apiConnected) {
+                alert("API non connectée");
+                return;
+            }
+
+            const responseEl = document.getElementById("apiResponse");
+            responseEl.textContent = "🔄 Requête en cours...";
+
+            try {
+                const options = { method };
+                
+                // Configuration pour les requêtes POST
+                if (method === "POST") {
+                    options.headers = {
+                        "Content-Type": "application/json",
+                    };
+                    options.body = JSON.stringify({
+                        horizon_jours: 7,
+                    });
+                }
+
+                const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+                const data = await response.json();
+
+                responseEl.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseEl.textContent = `Erreur: ${error.message}`;
+            }
+        }
+
+        /**
+         * Affichage des instructions pour ouvrir la carte interactive
+         */
+        function openCarteFile() {
+            const instructions = `
+Instructions pour ouvrir la carte interactive:
+
+1. Naviguez vers le dossier de votre projet SOTRACO
+2. Ouvrez le dossier 'web'
+3. Double-cliquez sur le fichier 'carte_interactive.html'
+4. La carte s'ouvrira dans votre navigateur par défaut
+
+Ou bien:
+1. Ouvrez votre navigateur
+2. Appuyez sur Ctrl+O (ou Cmd+O sur Mac)
+3. Naviguez vers web/carte_interactive.html
+4. Cliquez sur "Ouvrir"
+
+La carte interactive vous permettra de:
+- Voir tous les arrêts du réseau SOTRACO
+- Filtrer par ligne de bus
+- Obtenir des informations détaillées sur chaque arrêt
+- Visualiser la géographie du réseau de Ouagadougou
+            `;
+            alert(instructions);
+        }
+    </script>
+</body>
+</html>
