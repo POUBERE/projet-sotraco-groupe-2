@@ -1,0 +1,16 @@
+{
+    "statistiques_systeme": {
+        "nb_predictions": 0,
+        "nb_arrets": 50,
+        "nb_lignes": 15
+    },
+    "timestamp": "2025-09-17_16-26-26",
+    "version": "2.0.0",
+    "config_carte": {
+        "centre_lat": 12.3686,
+        "zoom_initial": 12,
+        "couleurs_lignes": {
+        },
+        "centre_lon": -1.5275
+    }
+}
