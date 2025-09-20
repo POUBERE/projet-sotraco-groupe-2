@@ -1,0 +1,49 @@
+RAPPORT D'INTÉGRITÉ DES DONNÉES SOTRACO
+Généré le: 2025-09-15T23:15:49.028
+Erreurs totales: 20
+
+=== contraintes_metier ===
+Statut: ERREUR
+Erreurs: 15
+Détails:
+- Contrainte densité minimale violée ligne 5
+- Contrainte densité minimale violée ligne 12
+- Contrainte densité minimale violée ligne 8
+- Contrainte densité minimale violée ligne 1
+- Contrainte densité minimale violée ligne 6
+- Contrainte densité minimale violée ligne 11
+- Contrainte densité minimale violée ligne 9
+- Contrainte densité minimale violée ligne 14
+- Contrainte densité minimale violée ligne 3
+- Contrainte densité minimale violée ligne 7
+- Contrainte densité minimale violée ligne 4
+- Contrainte densité minimale violée ligne 13
+- Contrainte densité minimale violée ligne 15
+- Contrainte densité minimale violée ligne 2
+- Contrainte densité minimale violée ligne 10
+
+=== coherence_arrets_lignes ===
+Statut: OK
+Erreurs: 0
+Détails:
+
+=== doublons ===
+Statut: ERREUR
+Erreurs: 5
+Détails:
+- Doublons position (12.357, -1.512): arrêts 25, 50
+- Doublons position (12.323, -1.568): arrêts 24, 40
+- Doublons position (12.357, -1.523): arrêts 31, 22, 47
+- Doublons position (12.379, -1.487): arrêts 32, 49
+- Doublons position (12.346, -1.499): arrêts 36, 20
+
+=== completude_donnees ===
+Statut: OK
+Erreurs: 0
+Détails:
+
+=== coordonnees_valides ===
+Statut: OK
+Erreurs: 0
+Détails:
+

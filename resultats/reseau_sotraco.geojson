@@ -1,0 +1,1852 @@
+{
+    "name": "Réseau SOTRACO Ouagadougou",
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.531,
+                    12.368
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    14
+                ],
+                "zone": "Zone 1",
+                "nom": "Place de la Révolution",
+                "abribus": true,
+                "score_importance": 77.12,
+                "id": 5,
+                "quartier": "Centre-Ville",
+                "total_passagers": 928,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5234,
+                    12.3712
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    4,
+                    6
+                ],
+                "zone": "Zone 1",
+                "nom": "Secteur 7 École",
+                "abribus": true,
+                "score_importance": 85,
+                "id": 35,
+                "quartier": "Secteur 7",
+                "total_passagers": 1186,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5445,
+                    12.3678
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    10,
+                    15
+                ],
+                "zone": "Zone 4",
+                "nom": "Balkuy Centre",
+                "abribus": false,
+                "score_importance": 24.2,
+                "id": 30,
+                "quartier": "Balkuy",
+                "total_passagers": 355,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4867,
+                    12.3789
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    5,
+                    14
+                ],
+                "zone": "Zone 3",
+                "nom": "Nongremassom École",
+                "abribus": false,
+                "score_importance": 46.68,
+                "id": 32,
+                "quartier": "Nongremassom",
+                "total_passagers": 667,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5185,
+                    12.3598
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    2,
+                    7
+                ],
+                "zone": "Zone 2",
+                "nom": "Patte d'Oie",
+                "abribus": true,
+                "score_importance": 70,
+                "id": 6,
+                "quartier": "Patte d'Oie",
+                "total_passagers": 1925,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5156,
+                    12.3612
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    9,
+                    15
+                ],
+                "zone": "Zone 2",
+                "nom": "Cité AN V",
+                "abribus": false,
+                "score_importance": 50,
+                "id": 45,
+                "quartier": "Cité AN V",
+                "total_passagers": 1662,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5267,
+                    12.3705
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    4,
+                    15
+                ],
+                "zone": "Zone 1",
+                "nom": "Marché Central",
+                "abribus": false,
+                "score_importance": 75,
+                "id": 4,
+                "quartier": "Centre-Ville",
+                "total_passagers": 1277,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5378,
+                    12.3856
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    4
+                ],
+                "zone": "Zone 4",
+                "nom": "Gounghin Centre",
+                "abribus": false,
+                "score_importance": 55,
+                "id": 13,
+                "quartier": "Gounghin",
+                "total_passagers": 1386,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4986,
+                    12.4125
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    1
+                ],
+                "zone": "Zone 5",
+                "nom": "Kossodo Terminal",
+                "abribus": true,
+                "score_importance": 55,
+                "id": 12,
+                "quartier": "Kossodo",
+                "total_passagers": 2748,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4787,
+                    12.4123
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    6,
+                    12
+                ],
+                "zone": "Zone 5",
+                "nom": "Rimkièta Dispensaire",
+                "abribus": false,
+                "score_importance": 40.64,
+                "id": 28,
+                "quartier": "Rimkièta",
+                "total_passagers": 766,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4534,
+                    12.4678
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    14
+                ],
+                "zone": "Zone 5",
+                "nom": "Cissin Terminal",
+                "abribus": false,
+                "score_importance": 25.36,
+                "id": 23,
+                "quartier": "Cissin",
+                "total_passagers": 509,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4567,
+                    12.4234
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    6,
+                    8
+                ],
+                "zone": "Zone 5",
+                "nom": "Ouaga 2000 Carrefour",
+                "abribus": true,
+                "score_importance": 70,
+                "id": 41,
+                "quartier": "Ouaga 2000",
+                "total_passagers": 1385,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5012,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    2,
+                    13
+                ],
+                "zone": "Zone 3",
+                "nom": "Cité AN II",
+                "abribus": false,
+                "score_importance": 50,
+                "id": 43,
+                "quartier": "Cité AN II",
+                "total_passagers": 1332,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5156,
+                    12.3998
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    2
+                ],
+                "zone": "Zone 5",
+                "nom": "Université de Ouaga I",
+                "abribus": true,
+                "score_importance": 65,
+                "id": 11,
+                "quartier": "Université",
+                "total_passagers": 2422,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4987,
+                    12.3456
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    7,
+                    12
+                ],
+                "zone": "Zone 3",
+                "nom": "Secteur 25 Carrefour",
+                "abribus": false,
+                "score_importance": 57.599999999999994,
+                "id": 36,
+                "quartier": "Secteur 25",
+                "total_passagers": 940,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5345,
+                    12.3678
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    5,
+                    11
+                ],
+                "zone": "Zone 1",
+                "nom": "Secteur 4 Marché",
+                "abribus": false,
+                "score_importance": 75,
+                "id": 39,
+                "quartier": "Secteur 4",
+                "total_passagers": 1267,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5156,
+                    12.3542
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    5
+                ],
+                "zone": "Zone 2",
+                "nom": "Rond-Point des Nations-Unies",
+                "abribus": true,
+                "score_importance": 65,
+                "id": 7,
+                "quartier": "Zone du Bois",
+                "total_passagers": 1072,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5123,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    1,
+                    3
+                ],
+                "zone": "Zone 2",
+                "nom": "Somgandé Carrefour",
+                "abribus": true,
+                "score_importance": 70,
+                "id": 25,
+                "quartier": "Somgandé",
+                "total_passagers": 2485,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5156,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    2,
+                    9
+                ],
+                "zone": "Zone 2",
+                "nom": "Secteur 15 Dispensaire",
+                "abribus": false,
+                "score_importance": 50,
+                "id": 34,
+                "quartier": "Secteur 15",
+                "total_passagers": 1523,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5123,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    8,
+                    14
+                ],
+                "zone": "Zone 2",
+                "nom": "CNSS Carrefour",
+                "abribus": true,
+                "score_importance": 70,
+                "id": 50,
+                "quartier": "Zone du Bois",
+                "total_passagers": 1455,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5342,
+                    12.3658
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    8,
+                    11
+                ],
+                "zone": "Zone 1",
+                "nom": "Place de la Nation",
+                "abribus": true,
+                "score_importance": 85,
+                "id": 2,
+                "quartier": "Centre-Ville",
+                "total_passagers": 1359,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5445,
+                    12.3789
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    15
+                ],
+                "zone": "Zone 4",
+                "nom": "Marché Sankaryaré",
+                "abribus": false,
+                "score_importance": 36.72,
+                "id": 10,
+                "quartier": "Sankaryaré",
+                "total_passagers": 793,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5689,
+                    12.3234
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    9
+                ],
+                "zone": "Zone 4",
+                "nom": "Boulmiougou Lycée",
+                "abribus": false,
+                "score_importance": 43,
+                "id": 18,
+                "quartier": "Boulmiougou",
+                "total_passagers": 950,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4998,
+                    12.3789
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    2,
+                    7
+                ],
+                "zone": "Zone 3",
+                "nom": "Wayalghin École",
+                "abribus": false,
+                "score_importance": 50,
+                "id": 26,
+                "quartier": "Wayalghin",
+                "total_passagers": 1131,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5567,
+                    12.3234
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    4,
+                    9
+                ],
+                "zone": "Zone 4",
+                "nom": "Nioko II Marché",
+                "abribus": false,
+                "score_importance": 60,
+                "id": 27,
+                "quartier": "Nioko II",
+                "total_passagers": 1419,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5567,
+                    12.3456
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    1,
+                    12
+                ],
+                "zone": "Zone 4",
+                "nom": "Zone Industrielle",
+                "abribus": false,
+                "score_importance": 60,
+                "id": 42,
+                "quartier": "Zone Industrielle",
+                "total_passagers": 2131,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4978,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    7
+                ],
+                "zone": "Zone 3",
+                "nom": "Tanghin École",
+                "abribus": false,
+                "score_importance": 45.120000000000005,
+                "id": 16,
+                "quartier": "Tanghin",
+                "total_passagers": 753,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4987,
+                    12.3456
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    11
+                ],
+                "zone": "Zone 3",
+                "nom": "Sig-Noghin Marché",
+                "abribus": false,
+                "score_importance": 35.64,
+                "id": 20,
+                "quartier": "Sig-Noghin",
+                "total_passagers": 766,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5234,
+                    12.3798
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    10
+                ],
+                "zone": "Zone 2",
+                "nom": "Dassasgo Dispensaire",
+                "abribus": false,
+                "score_importance": 43.36,
+                "id": 19,
+                "quartier": "Dassasgo",
+                "total_passagers": 709,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4867,
+                    12.3789
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    6,
+                    13
+                ],
+                "zone": "Zone 3",
+                "nom": "CHU-YO",
+                "abribus": true,
+                "score_importance": 57.76,
+                "id": 49,
+                "quartier": "Bogodogo",
+                "total_passagers": 694,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4998,
+                    12.3589
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    7,
+                    14
+                ],
+                "zone": "Zone 3",
+                "nom": "Cité AN III",
+                "abribus": false,
+                "score_importance": 51.96,
+                "id": 44,
+                "quartier": "Cité AN III",
+                "total_passagers": 799,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5234,
+                    12.3456
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    12
+                ],
+                "zone": "Zone 3",
+                "nom": "Rond-Point du 8 Mars",
+                "abribus": true,
+                "score_importance": 37.879999999999995,
+                "id": 9,
+                "quartier": "Zanguina",
+                "total_passagers": 572,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5234,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    3,
+                    11
+                ],
+                "zone": "Zone 2",
+                "nom": "Kilwin Carrefour",
+                "abribus": true,
+                "score_importance": 46.28,
+                "id": 31,
+                "quartier": "Kilwin",
+                "total_passagers": 657,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5012,
+                    12.3456
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    8,
+                    13
+                ],
+                "zone": "Zone 3",
+                "nom": "Yamtenga Mosquée",
+                "abribus": false,
+                "score_importance": 60,
+                "id": 29,
+                "quartier": "Yamtenga",
+                "total_passagers": 1395,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5445,
+                    12.3234
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    3,
+                    10
+                ],
+                "zone": "Zone 4",
+                "nom": "Cité Azimo",
+                "abribus": false,
+                "score_importance": 50,
+                "id": 46,
+                "quartier": "Cité Azimo",
+                "total_passagers": 1332,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4656,
+                    12.4567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    12
+                ],
+                "zone": "Zone 5",
+                "nom": "Tampouy Centre",
+                "abribus": false,
+                "score_importance": 45,
+                "id": 21,
+                "quartier": "Tampouy",
+                "total_passagers": 1248,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5267,
+                    12.3734
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    3,
+                    14
+                ],
+                "zone": "Zone 1",
+                "nom": "Secteur 12 Lycée",
+                "abribus": true,
+                "score_importance": 85,
+                "id": 38,
+                "quartier": "Secteur 12",
+                "total_passagers": 1267,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5678,
+                    12.3234
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    15
+                ],
+                "zone": "Zone 4",
+                "nom": "Bendogo Village",
+                "abribus": false,
+                "score_importance": 19.2,
+                "id": 24,
+                "quartier": "Bendogo",
+                "total_passagers": 355,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5089,
+                    12.3725
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    13
+                ],
+                "zone": "Zone 3",
+                "nom": "Avenue Yennenga",
+                "abribus": false,
+                "score_importance": 47.160000000000004,
+                "id": 8,
+                "quartier": "Koulouba",
+                "total_passagers": 804,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5456,
+                    12.3689
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    8
+                ],
+                "zone": "Zone 2",
+                "nom": "Zogona Mosquée",
+                "abribus": false,
+                "score_importance": 55,
+                "id": 17,
+                "quartier": "Zogona",
+                "total_passagers": 1598,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5123,
+                    12.3689
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    10,
+                    13
+                ],
+                "zone": "Zone 2",
+                "nom": "Secteur 20 Mosquée",
+                "abribus": false,
+                "score_importance": 50,
+                "id": 37,
+                "quartier": "Secteur 20",
+                "total_passagers": 1319,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5275,
+                    12.3686
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    1,
+                    10
+                ],
+                "zone": "Zone 1",
+                "nom": "Gare Routière",
+                "abribus": true,
+                "score_importance": 85,
+                "id": 1,
+                "quartier": "Centre-Ville",
+                "total_passagers": 3842,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5234,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    13
+                ],
+                "zone": "Zone 2",
+                "nom": "Wemtenga Carrefour",
+                "abribus": false,
+                "score_importance": 55,
+                "id": 22,
+                "quartier": "Wemtenga",
+                "total_passagers": 1012,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5234,
+                    12.3567
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    4,
+                    11
+                ],
+                "zone": "Zone 2",
+                "nom": "Cité SONATUR",
+                "abribus": true,
+                "score_importance": 54.32,
+                "id": 47,
+                "quartier": "Cité SONATUR",
+                "total_passagers": 858,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5567,
+                    12.3345
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    5
+                ],
+                "zone": "Zone 4",
+                "nom": "Pissy Marché",
+                "abribus": false,
+                "score_importance": 45,
+                "id": 14,
+                "quartier": "Pissy",
+                "total_passagers": 1289,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5298,
+                    12.3622
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    9,
+                    3
+                ],
+                "zone": "Zone 1",
+                "nom": "Avenue Kwame Nkrumah",
+                "abribus": true,
+                "score_importance": 85,
+                "id": 3,
+                "quartier": "Centre-Ville",
+                "total_passagers": 2126,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5289,
+                    12.3645
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": true,
+                "lignes_desservies": [
+                    1,
+                    8
+                ],
+                "zone": "Zone 1",
+                "nom": "Secteur 30 Marché",
+                "abribus": false,
+                "score_importance": 75,
+                "id": 33,
+                "quartier": "Secteur 30",
+                "total_passagers": 2153,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5678,
+                    12.3234
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    9,
+                    15
+                ],
+                "zone": "Zone 4",
+                "nom": "Secteur 28 Centre",
+                "abribus": false,
+                "score_importance": 29.72,
+                "id": 40,
+                "quartier": "Secteur 28",
+                "total_passagers": 493,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.5789,
+                    12.3123
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    5,
+                    9
+                ],
+                "zone": "Zone 4",
+                "nom": "Barrage de Boulmiougou",
+                "abribus": false,
+                "score_importance": 41.6,
+                "id": 48,
+                "quartier": "Boulmiougou",
+                "total_passagers": 790,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -1.4789,
+                    12.4234
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "eclairage": false,
+                "lignes_desservies": [
+                    6
+                ],
+                "zone": "Zone 5",
+                "nom": "Samandin Carrefour",
+                "abribus": false,
+                "score_importance": 45,
+                "id": 15,
+                "quartier": "Samandin",
+                "total_passagers": 1463,
+                "type": "arret"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.4867,
+                        12.3789
+                    ],
+                    [
+                        -1.5345,
+                        12.3678
+                    ],
+                    [
+                        -1.5156,
+                        12.3542
+                    ],
+                    [
+                        -1.5567,
+                        12.3345
+                    ],
+                    [
+                        -1.5789,
+                        12.3123
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 20,
+                "statut": "Actif",
+                "destination": "Pissy",
+                "nom": "Ligne 5 - Pissy",
+                "origine": "Rond-Point des Nations-Unies",
+                "frequence_min": 20,
+                "id": 5,
+                "type": "ligne",
+                "tarif_fcfa": 150
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.4787,
+                        12.4123
+                    ],
+                    [
+                        -1.4987,
+                        12.3456
+                    ],
+                    [
+                        -1.5567,
+                        12.3456
+                    ],
+                    [
+                        -1.5234,
+                        12.3456
+                    ],
+                    [
+                        -1.4656,
+                        12.4567
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 21,
+                "statut": "Actif",
+                "destination": "Tampouy",
+                "nom": "Ligne 12 - Tampouy",
+                "origine": "Rond-Point du 8 Mars",
+                "frequence_min": 25,
+                "id": 12,
+                "type": "ligne",
+                "tarif_fcfa": 175
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.4567,
+                        12.4234
+                    ],
+                    [
+                        -1.5123,
+                        12.3567
+                    ],
+                    [
+                        -1.5342,
+                        12.3658
+                    ],
+                    [
+                        -1.5012,
+                        12.3456
+                    ],
+                    [
+                        -1.5456,
+                        12.3689
+                    ],
+                    [
+                        -1.5289,
+                        12.3645
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 14,
+                "statut": "Actif",
+                "destination": "Zogona",
+                "nom": "Ligne 8 - Zogona",
+                "origine": "Place de la Nation",
+                "frequence_min": 25,
+                "id": 8,
+                "type": "ligne",
+                "tarif_fcfa": 125
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.4986,
+                        12.4125
+                    ],
+                    [
+                        -1.5123,
+                        12.3567
+                    ],
+                    [
+                        -1.5567,
+                        12.3456
+                    ],
+                    [
+                        -1.5275,
+                        12.3686
+                    ],
+                    [
+                        -1.5289,
+                        12.3645
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 18,
+                "statut": "Actif",
+                "destination": "Kossodo",
+                "nom": "Ligne 1 - Centre-Ville",
+                "origine": "Gare Routière",
+                "frequence_min": 20,
+                "id": 1,
+                "type": "ligne",
+                "tarif_fcfa": 150
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5234,
+                        12.3712
+                    ],
+                    [
+                        -1.4787,
+                        12.4123
+                    ],
+                    [
+                        -1.4567,
+                        12.4234
+                    ],
+                    [
+                        -1.4867,
+                        12.3789
+                    ],
+                    [
+                        -1.4789,
+                        12.4234
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 25,
+                "statut": "Actif",
+                "destination": "Samandin",
+                "nom": "Ligne 6 - Samandin",
+                "origine": "Gare SOTRACO",
+                "frequence_min": 35,
+                "id": 6,
+                "type": "ligne",
+                "tarif_fcfa": 200
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5345,
+                        12.3678
+                    ],
+                    [
+                        -1.5342,
+                        12.3658
+                    ],
+                    [
+                        -1.4987,
+                        12.3456
+                    ],
+                    [
+                        -1.5234,
+                        12.3567
+                    ],
+                    [
+                        -1.5234,
+                        12.3567
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 17,
+                "statut": "Actif",
+                "destination": "Sig-Noghin",
+                "nom": "Ligne 11 - Sig-Noghin",
+                "origine": "Centre-Ville",
+                "frequence_min": 30,
+                "id": 11,
+                "type": "ligne",
+                "tarif_fcfa": 150
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5156,
+                        12.3612
+                    ],
+                    [
+                        -1.5156,
+                        12.3567
+                    ],
+                    [
+                        -1.5689,
+                        12.3234
+                    ],
+                    [
+                        -1.5567,
+                        12.3234
+                    ],
+                    [
+                        -1.5298,
+                        12.3622
+                    ],
+                    [
+                        -1.5678,
+                        12.3234
+                    ],
+                    [
+                        -1.5789,
+                        12.3123
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 19,
+                "statut": "Actif",
+                "destination": "Boulmiougou",
+                "nom": "Ligne 9 - Boulmiougou",
+                "origine": "Avenue Kwame Nkrumah",
+                "frequence_min": 20,
+                "id": 9,
+                "type": "ligne",
+                "tarif_fcfa": 175
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.531,
+                        12.368
+                    ],
+                    [
+                        -1.4867,
+                        12.3789
+                    ],
+                    [
+                        -1.4534,
+                        12.4678
+                    ],
+                    [
+                        -1.5123,
+                        12.3567
+                    ],
+                    [
+                        -1.4998,
+                        12.3589
+                    ],
+                    [
+                        -1.5267,
+                        12.3734
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 23,
+                "statut": "Actif",
+                "destination": "Cissin",
+                "nom": "Ligne 14 - Cissin",
+                "origine": "Place de la Révolution",
+                "frequence_min": 40,
+                "id": 14,
+                "type": "ligne",
+                "tarif_fcfa": 200
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5123,
+                        12.3567
+                    ],
+                    [
+                        -1.5234,
+                        12.3567
+                    ],
+                    [
+                        -1.5445,
+                        12.3234
+                    ],
+                    [
+                        -1.5267,
+                        12.3734
+                    ],
+                    [
+                        -1.5298,
+                        12.3622
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 15,
+                "statut": "Actif",
+                "destination": "Aéroport Thomas Sankara",
+                "nom": "Ligne 3 - Aéroport",
+                "origine": "Centre-Ville",
+                "frequence_min": 30,
+                "id": 3,
+                "type": "ligne",
+                "tarif_fcfa": 200
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5185,
+                        12.3598
+                    ],
+                    [
+                        -1.4987,
+                        12.3456
+                    ],
+                    [
+                        -1.4998,
+                        12.3789
+                    ],
+                    [
+                        -1.4978,
+                        12.3567
+                    ],
+                    [
+                        -1.4998,
+                        12.3589
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 16,
+                "statut": "Actif",
+                "destination": "Tanghin",
+                "nom": "Ligne 7 - Tanghin",
+                "origine": "Patte d'Oie",
+                "frequence_min": 30,
+                "id": 7,
+                "type": "ligne",
+                "tarif_fcfa": 150
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5234,
+                        12.3712
+                    ],
+                    [
+                        -1.5267,
+                        12.3705
+                    ],
+                    [
+                        -1.5378,
+                        12.3856
+                    ],
+                    [
+                        -1.5567,
+                        12.3234
+                    ],
+                    [
+                        -1.5234,
+                        12.3567
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 12,
+                "statut": "Actif",
+                "destination": "Gounghin",
+                "nom": "Ligne 4 - Gounghin",
+                "origine": "Marché Central",
+                "frequence_min": 25,
+                "id": 4,
+                "type": "ligne",
+                "tarif_fcfa": 125
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5012,
+                        12.3567
+                    ],
+                    [
+                        -1.4867,
+                        12.3789
+                    ],
+                    [
+                        -1.5012,
+                        12.3456
+                    ],
+                    [
+                        -1.5089,
+                        12.3725
+                    ],
+                    [
+                        -1.5123,
+                        12.3689
+                    ],
+                    [
+                        -1.5234,
+                        12.3567
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 16,
+                "statut": "Actif",
+                "destination": "Wemtenga",
+                "nom": "Ligne 13 - Wemtenga",
+                "origine": "Avenue Yennenga",
+                "frequence_min": 35,
+                "id": 13,
+                "type": "ligne",
+                "tarif_fcfa": 150
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5445,
+                        12.3678
+                    ],
+                    [
+                        -1.5156,
+                        12.3612
+                    ],
+                    [
+                        -1.5267,
+                        12.3705
+                    ],
+                    [
+                        -1.5445,
+                        12.3789
+                    ],
+                    [
+                        -1.5678,
+                        12.3234
+                    ],
+                    [
+                        -1.5678,
+                        12.3234
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 18,
+                "statut": "Actif",
+                "destination": "Bendogo",
+                "nom": "Ligne 15 - Bendogo",
+                "origine": "Marché Sankaryaré",
+                "frequence_min": 30,
+                "id": 15,
+                "type": "ligne",
+                "tarif_fcfa": 150
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5185,
+                        12.3598
+                    ],
+                    [
+                        -1.5012,
+                        12.3567
+                    ],
+                    [
+                        -1.5156,
+                        12.3998
+                    ],
+                    [
+                        -1.5156,
+                        12.3567
+                    ],
+                    [
+                        -1.4998,
+                        12.3789
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 22,
+                "statut": "Actif",
+                "destination": "Université de Ouaga I",
+                "nom": "Ligne 2 - Université",
+                "origine": "Patte d'Oie",
+                "frequence_min": 15,
+                "id": 2,
+                "type": "ligne",
+                "tarif_fcfa": 175
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        -1.5445,
+                        12.3678
+                    ],
+                    [
+                        -1.5234,
+                        12.3798
+                    ],
+                    [
+                        -1.5445,
+                        12.3234
+                    ],
+                    [
+                        -1.5123,
+                        12.3689
+                    ],
+                    [
+                        -1.5275,
+                        12.3686
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "distance_km": 13,
+                "statut": "Actif",
+                "destination": "Dassasgo",
+                "nom": "Ligne 10 - Dassasgo",
+                "origine": "Gare Routière",
+                "frequence_min": 40,
+                "id": 10,
+                "type": "ligne",
+                "tarif_fcfa": 125
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection",
+    "crs": {
+        "properties": {
+            "name": "EPSG:4326"
+        },
+        "type": "name"
+    }
+}
