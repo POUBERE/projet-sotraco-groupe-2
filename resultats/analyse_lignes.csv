@@ -1,0 +1,16 @@
+ID,Nom,Distance_KM,Frequence_Min,Tarif_FCFA,Statut
+5,Ligne 5 - Pissy,20.0,20,150,Actif
+12,Ligne 12 - Tampouy,21.0,25,175,Actif
+8,Ligne 8 - Zogona,14.0,25,125,Actif
+1,Ligne 1 - Centre-Ville,18.0,20,150,Actif
+6,Ligne 6 - Samandin,25.0,35,200,Actif
+11,Ligne 11 - Sig-Noghin,17.0,30,150,Actif
+9,Ligne 9 - Boulmiougou,19.0,20,175,Actif
+14,Ligne 14 - Cissin,23.0,40,200,Actif
+3,Ligne 3 - Aéroport,15.0,30,200,Actif
+7,Ligne 7 - Tanghin,16.0,30,150,Actif
+4,Ligne 4 - Gounghin,12.0,25,125,Actif
+13,Ligne 13 - Wemtenga,16.0,35,150,Actif
+15,Ligne 15 - Bendogo,18.0,30,150,Actif
+2,Ligne 2 - Université,22.0,15,175,Actif
+10,Ligne 10 - Dassasgo,13.0,40,125,Actif

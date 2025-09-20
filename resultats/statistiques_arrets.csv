@@ -1,0 +1,51 @@
+ID,Nom,Zone,Nb_Lignes,Abribus,Eclairage
+5,Place de la Révolution,Zone 1,1,true,true
+35,Secteur 7 École,Zone 1,2,true,true
+30,Balkuy Centre,Zone 4,2,false,false
+32,Nongremassom École,Zone 3,2,false,true
+6,Patte d'Oie,Zone 2,2,true,true
+45,Cité AN V,Zone 2,2,false,false
+4,Marché Central,Zone 1,2,false,true
+13,Gounghin Centre,Zone 4,1,false,true
+12,Kossodo Terminal,Zone 5,1,true,false
+28,Rimkièta Dispensaire,Zone 5,2,false,false
+23,Cissin Terminal,Zone 5,1,false,false
+41,Ouaga 2000 Carrefour,Zone 5,2,true,true
+43,Cité AN II,Zone 3,2,false,false
+11,Université de Ouaga I,Zone 5,1,true,true
+36,Secteur 25 Carrefour,Zone 3,2,false,true
+39,Secteur 4 Marché,Zone 1,2,false,true
+7,Rond-Point des Nations-Unies,Zone 2,1,true,true
+25,Somgandé Carrefour,Zone 2,2,true,true
+34,Secteur 15 Dispensaire,Zone 2,2,false,false
+50,CNSS Carrefour,Zone 2,2,true,true
+2,Place de la Nation,Zone 1,2,true,true
+10,Marché Sankaryaré,Zone 4,1,false,false
+18,Boulmiougou Lycée,Zone 4,1,false,false
+26,Wayalghin École,Zone 3,2,false,false
+27,Nioko II Marché,Zone 4,2,false,true
+42,Zone Industrielle,Zone 4,2,false,true
+16,Tanghin École,Zone 3,1,false,true
+20,Sig-Noghin Marché,Zone 3,1,false,false
+19,Dassasgo Dispensaire,Zone 2,1,false,true
+49,CHU-YO,Zone 3,2,true,true
+44,Cité AN III,Zone 3,2,false,true
+9,Rond-Point du 8 Mars,Zone 3,1,true,false
+31,Kilwin Carrefour,Zone 2,2,true,false
+29,Yamtenga Mosquée,Zone 3,2,false,true
+46,Cité Azimo,Zone 4,2,false,false
+21,Tampouy Centre,Zone 5,1,false,false
+38,Secteur 12 Lycée,Zone 1,2,true,true
+24,Bendogo Village,Zone 4,1,false,false
+8,Avenue Yennenga,Zone 3,1,false,true
+17,Zogona Mosquée,Zone 2,1,false,true
+37,Secteur 20 Mosquée,Zone 2,2,false,false
+1,Gare Routière,Zone 1,2,true,true
+22,Wemtenga Carrefour,Zone 2,1,false,true
+47,Cité SONATUR,Zone 2,2,true,false
+14,Pissy Marché,Zone 4,1,false,false
+3,Avenue Kwame Nkrumah,Zone 1,2,true,true
+33,Secteur 30 Marché,Zone 1,2,false,true
+40,Secteur 28 Centre,Zone 4,2,false,false
+48,Barrage de Boulmiougou,Zone 4,2,false,false
+15,Samandin Carrefour,Zone 5,1,false,false
