@@ -1,11 +1,12 @@
 name = "SOTRACO"
 uuid = "12345678-1234-5678-9012-123456789012"
-authors = ["Membre 1", "Membre 2"]
+authors = ["OUEDRAOGO LASSINA", "POUBERE ABDOURAZAKOU"]
 version = "2.0.0"
 description = "Système d'Optimisation du Transport Public SOTRACO avec fonctionnalités avancées"
 
 [deps]
 # Gestion des données
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
