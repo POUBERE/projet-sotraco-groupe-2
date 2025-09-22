@@ -2,7 +2,7 @@
 
 ## Système d'Optimisation du Transport Public SOTRACO v2.0
 
-### Binôme 2 - Analyse et Optimisation du Réseau de Ouagadougou
+### Analyse et Optimisation du Réseau de Transport de Ouagadougou
 
 ---
 
@@ -11,18 +11,40 @@
 **Période :** Septembre 2025  
 **Version :** 2.0.0
 
-**Équipe de développement :**
+**Équipe de développement - Binôme 2 :**
 
 - **OUEDRAOGO Lassina** - Responsable Architecture Système et Optimisation
 - **POUBERE Abdourazakou** - Responsable Analyse de Données et Visualisation
 
 ---
 
+## INTRODUCTION
+
+### Contexte et Problématique
+
+Le transport public urbain au Burkina Faso, et particulièrement à Ouagadougou, fait face à des défis majeurs liés à la croissance démographique rapide, aux contraintes budgétaires et à l'inefficacité des systèmes de gestion traditionnels. La Société de Transport en Commun de Ouagadougou (SOTRACO) dessert quotidiennement plus de 50 000 passagers sur un réseau de 12 lignes actives, mais souffre de problèmes d'optimisation qui se traduisent par des temps d'attente excessifs, des taux d'occupation déséquilibrés et des coûts opérationnels élevés.
+
+### Objectifs du Projet
+
+Ce projet vise à développer une solution technologique innovante pour optimiser les performances du réseau SOTRACO en s'appuyant sur l'analyse de données réelles et des algorithmes d'optimisation avancés. Les objectifs spécifiques incluent :
+
+- L'analyse approfondie des patterns de fréquentation sur 6 semaines
+- Le développement d'algorithmes d'optimisation multi-critères
+- La création d'un système de prédiction basé sur l'intelligence artificielle
+- L'intégration de considérations d'accessibilité et d'impact social
+- La conception d'une interface utilisateur professionnelle
+
+### Méthodologie
+
+Notre approche combine l'analyse quantitative de 245 782 enregistrements de fréquentation avec le développement d'une architecture logicielle modulaire en Julia. Le travail a été réparti entre deux axes complémentaires : l'architecture système et l'optimisation (Lassina), et l'analyse de données avec visualisation (Abdourazakou).
+
+---
+
 ## 1. RÉSUMÉ EXÉCUTIF
 
-### 1.1 Contexte et Vision
+### 1.1 Vision du Projet
 
-Le projet SOTRACO constitue une solution d'optimisation avancée pour le réseau de transport public de Ouagadougou, développée en réponse aux défis croissants de mobilité urbaine au Burkina Faso. Face à une population urbaine en expansion constante et des ressources budgétaires limitées, notre système propose une approche data-driven pour transformer l'efficacité opérationnelle du réseau SOTRACO.
+Le projet SOTRACO v2.0 constitue une solution d'optimisation avancée pour le réseau de transport public de Ouagadougou, développée en réponse aux défis croissants de mobilité urbaine au Burkina Faso. Face à une population urbaine en expansion constante et des ressources budgétaires limitées, notre système propose une approche data-driven pour transformer l'efficacité opérationnelle du réseau SOTRACO.
 
 Cette version 2.0 intègre des fonctionnalités de pointe incluant l'intelligence artificielle prédictive, la cartographie interactive avancée, une API REST complète, et une attention particulière portée à l'accessibilité sociale et à l'impact environnemental.
 
@@ -32,9 +54,9 @@ Notre solution délivre des résultats quantifiables significatifs :
 
 **Métriques Techniques :**
 
-- **15,000+ lignes de code** réparties sur 19 modules spécialisés
+- **15 000+ lignes de code** réparties sur 19 modules spécialisés
 - **50+ fonctionnalités avancées** intégrées
-- **245,782 enregistrements** de fréquentation analysés sur 6 semaines
+- **245 782 enregistrements** de fréquentation analysés sur 6 semaines
 - **47 arrêts géolocalisés** avec précision GPS
 - **12 lignes actives** optimisées
 
@@ -44,8 +66,8 @@ Notre solution délivre des résultats quantifiables significatifs :
 | ---------------------- | ------------------ | ------------------ | ------------ |
 | Temps d'attente moyen  | 12.3 minutes       | 10.1 minutes       | **-18%**     |
 | Taux d'occupation      | 64.2%              | 76.8%              | **+20%**     |
-| Consommation carburant | 2,840L/jour        | 2,415L/jour        | **-15%**     |
-| Économies quotidiennes | -                  | 515,000 FCFA       | **+13%**     |
+| Consommation carburant | 2 840L/jour        | 2 415L/jour        | **-15%**     |
+| Économies quotidiennes | -                  | 515 000 FCFA       | **+13%**     |
 
 ### 1.3 Contributions Principales
 
@@ -57,7 +79,7 @@ Notre binôme a conçu et implémenté :
 - **Interface web professionnelle** : Dashboard temps réel avec cartes interactives Leaflet.js
 - **API REST complète** : 15+ endpoints pour intégrations tierces
 - **Module d'accessibilité social** : Analyse d'impact PMR et tarification équitable
-- **Optimisation performance** : Gestion de datasets >100,000 enregistrements
+- **Optimisation performance** : Gestion de datasets >100 000 enregistrements
 
 ---
 
@@ -170,28 +192,6 @@ Métriques de validation (test sur 30 jours) :
 - Couverture intervalles confiance : 89%
 ```
 
-**Exemple d'algorithme :**
-
-```julia
-function calculer_tendance_temporelle(donnees_ligne)
-    # Régression linéaire optimisée pour patterns transport
-    dates_numeriques = [Float64(Dates.value(d.date)) for d in donnees_ligne]
-    demandes = [Float64(d.montees + d.descentes) for d in donnees_ligne]
-
-    n = length(dates_numeriques)
-    sum_xy = sum(dates_numeriques .* demandes)
-    sum_x = sum(dates_numeriques)
-    sum_y = sum(demandes)
-    sum_x2 = sum(dates_numeriques .^ 2)
-
-    denominateur = n * sum_x2 - sum_x^2
-    pente = abs(denominateur) < 1e-10 ? 0.0 :
-           (n * sum_xy - sum_x * sum_y) / denominateur
-
-    return pente
-end
-```
-
 ### 3.2 Optimisation Multi-Critères Avancée
 
 **Module `optimisation.jl` - Algorithmes sophistiqués d'aide à la décision**
@@ -202,13 +202,6 @@ Notre système d'optimisation résout simultanément :
 2. Maximisation du taux d'occupation véhicules
 3. Réduction des coûts opérationnels (carburant, personnel)
 4. Respect des contraintes réglementaires et techniques
-
-**Métriques calculées :**
-
-- Facteur de demande dynamique avec pondération temporelle
-- Facteur d'occupation avec gestion de la surcharge
-- Facteur temporel pour variations saisonnières
-- Application de contraintes opérationnelles réelles
 
 **Résultats d'optimisation quantifiés :**
 
@@ -223,7 +216,7 @@ Notre système d'optimisation résout simultanément :
 
 - Fréquence ajustée : 20 → 25 minutes (heures creuses)
 - Réallocation de 3 bus vers lignes surchargées
-- Économies opérationnelles : 180,000 FCFA/semaine
+- Économies opérationnelles : 180 000 FCFA/semaine
 
 ### 3.3 Cartographie Interactive Professionnelle
 
@@ -237,22 +230,6 @@ Notre système d'optimisation résout simultanément :
 - Export GeoJSON professionnel selon standards OpenGIS
 - Heatmaps de fréquentation avec agrégation spatiale
 - Filtrage dynamique par ligne et période
-
-**Classification automatique des arrêts :**
-
-```julia
-function classifier_arret(score_importance, total_passagers, arret)
-    if score_importance >= 80 || total_passagers >= 800
-        return "hub_majeur"      # Couleur rouge
-    elseif score_importance >= 60 || total_passagers >= 400
-        return "station_importante"  # Couleur orange
-    elseif score_importance >= 40 || total_passagers >= 200
-        return "arret_standard"     # Couleur verte
-    else
-        return "arret_secondaire"   # Couleur bleue
-    end
-end
-```
 
 ### 3.4 API REST Professionnelle
 
@@ -270,15 +247,6 @@ POST /api/predictions/generer       # Génération prédictions IA
 GET  /api/carte/donnees             # Export données géospatiales
 ```
 
-**Caractéristiques techniques :**
-
-- Gestion CORS intégrée pour applications web
-- Réponses JSON structurées avec métadonnées
-- Gestion d'erreurs robuste avec codes HTTP appropriés
-- Documentation auto-générée accessible via navigateur
-- Validation des paramètres d'entrée
-- Logging détaillé pour monitoring
-
 ---
 
 ## 4. INNOVATION SOCIALE ET ACCESSIBILITÉ
@@ -291,18 +259,11 @@ Notre approche intègre l'accessibilité dès la conception, avec analyse compl�
 
 **Populations ciblées avec estimation démographique :**
 
-- Mobilité réduite : 2,500 personnes (fauteuils roulants, béquilles)
-- Déficience visuelle : 1,800 personnes (cécité, malvoyance)
-- Déficience auditive : 1,200 personnes (surdité, malentendance)
-- Déficience cognitive : 3,000 personnes (autisme, déficience intellectuelle)
-- Personnes âgées : 15,000 personnes (>65 ans)
-
-**Score d'accessibilité multi-critères (0-100) :**
-
-- Équipements de base : abribus, éclairage (50 points)
-- Localisation géographique : zone urbaine (25 points)
-- Connectivité : nombre de lignes desservies (15 points)
-- Accessibilité services essentiels : hôpitaux, écoles (10 points)
+- Mobilité réduite : 2 500 personnes (fauteuils roulants, béquilles)
+- Déficience visuelle : 1 800 personnes (cécité, malvoyance)
+- Déficience auditive : 1 200 personnes (surdité, malentendance)
+- Déficience cognitive : 3 000 personnes (autisme, déficience intellectuelle)
+- Personnes âgées : 15 000 personnes (>65 ans)
 
 **Plan d'adaptation budgétisé sur 5 ans :**
 
@@ -314,14 +275,6 @@ Notre approche intègre l'accessibilité dès la conception, avec analyse compl�
 
 ### 4.2 Tarification Sociale Équitable
 
-**Calcul automatique basé sur données économiques locales :**
-
-Référentiel économique burkinabè :
-
-- Salaire minimum mensuel : 30,684 FCFA
-- Part transport recommandée : 10% du salaire
-- Budget transport populaire : 3,068 FCFA/mois
-
 **Grille tarifaire différenciée proposée :**
 
 - Grande précarité : 70 FCFA (-53% vs tarif moyen)
@@ -329,40 +282,24 @@ Référentiel économique burkinabè :
 - Tarif étudiant : 90 FCFA (-40% vs tarif moyen)
 - Tarif standard : 150 FCFA (maintien)
 
-**Impact budgétaire estimé :**
-
-- Perte de recettes : 12% du chiffre d'affaires transport
-- Compensation nécessaire : 2.1M FCFA/mois
-- Sources proposées : subvention municipale, aide internationale
-
 ### 4.3 Analyse d'Impact Écologique
-
-**Calcul complet des émissions et alternatives environnementales :**
 
 **Bilan carbone actuel :**
 
 - Distance quotidienne parcourue : 856 km
 - Consommation carburant : 300 L/jour
-- Émissions CO2 : 2.8 tonnes/jour (1,022 tonnes/an)
+- Émissions CO2 : 2.8 tonnes/jour (1 022 tonnes/an)
 - Équivalent à 222 voitures particulières
 
 **Scénarios de transition écologique :**
 
-**Court terme (6 mois) - Optimisation opérationnelle :**
+**Court terme (6 mois) :**
 
 - Éco-conduite et maintenance préventive
-- Optimisation des fréquences
 - Réduction émissions : 12% (122 tonnes CO2/an)
 - Investissement : 8M FCFA
 
-**Moyen terme (3 ans) - Hybridation :**
-
-- 30% de la flotte en bus hybrides
-- Biocarburant sur lignes restantes
-- Réduction émissions : 28% (286 tonnes CO2/an)
-- Investissement : 285M FCFA
-
-**Long terme (7 ans) - Électrification :**
+**Long terme (7 ans) :**
 
 - 70% de flotte électrique avec recharge solaire
 - Réduction émissions : 75% (767 tonnes CO2/an)
@@ -378,43 +315,27 @@ Référentiel économique burkinabè :
 
 **Capacités de traitement :**
 
-- Datasets >100,000 enregistrements avec performance optimisée
+- Datasets >100 000 enregistrements avec performance optimisée
 - Partitionnement intelligent par mois pour données historiques
 - Échantillonnage statistique préservant la représentativité
 - Optimisation mémoire dynamique avec nettoyage automatique
 - Cache intelligent des calculs fréquents
 
-**Optimisations implémentées :**
-
-- Index des zones pour recherche O(log n)
-- Cache des distances inter-arrêts
-- Compression des données anciennes (>30 jours)
-- Garbage collection optimisé
-- Pagination pour datasets volumineux
-
 ### 5.2 Benchmarking Intégré
 
-**Tests de performance automatisés avec métriques détaillées :**
+**Tests de performance automatisés :**
 
 ```
 Benchmarks SOTRACO v2.0 - Julia 1.9.0 / Ubuntu 20.04
 ════════════════════════════════════════════════════════
 Volume testé    │ Temps traitement │ Débit        │ Mémoire
 ────────────────┼─────────────────┼─────────────┼─────────
-1,000 enreg.    │ 0.24s           │ 4,167/s      │ 12 MB
-5,000 enreg.    │ 0.89s           │ 5,618/s      │ 35 MB
-10,000 enreg.   │ 1.67s           │ 5,988/s      │ 67 MB
-50,000 enreg.   │ 7.23s           │ 6,918/s      │ 312 MB
+1 000 enreg.    │ 0.24s           │ 4 167/s      │ 12 MB
+5 000 enreg.    │ 0.89s           │ 5 618/s      │ 35 MB
+10 000 enreg.   │ 1.67s           │ 5 988/s      │ 67 MB
+50 000 enreg.   │ 7.23s           │ 6 918/s      │ 312 MB
 ════════════════════════════════════════════════════════
 ```
-
-**Profiling mémoire détaillé :**
-
-- Arrêts (47) : 0.2 MB
-- Lignes (12) : 0.1 MB
-- Fréquentation (245k) : 187 MB
-- Prédictions (2.1k) : 1.8 MB
-- **Total système : 189.1 MB**
 
 ### 5.3 Suite de Tests Complète
 
@@ -430,14 +351,6 @@ Volume testé    │ Temps traitement │ Débit        │ Mémoire
 ✅ Intégration modules : 11/11 tests
 ✅ Performance système : 8/8 tests
 ```
-
-**Types de validation :**
-
-- Tests d'intégrité : cohérence arrêts-lignes bidirectionnelle
-- Validation contraintes métier : fréquences, capacités
-- Tests de performance : scalabilité selon volume
-- Détection automatique : doublons, valeurs aberrantes
-- Vérification géographique : coordonnées Ouagadougou
 
 ---
 
@@ -469,18 +382,6 @@ Interface console enrichie avec navigation intuitive structurée en 5 sections :
 - Export données multiformats (CSV, JSON, GeoJSON)
 - Calcul économies potentielles détaillé
 
-**4. Configuration Système (Options 14-17) :**
-
-- Informations système détaillées
-- Mode avancé (activation complète)
-- Configuration paramètres avancés
-- Tests et validation complète
-
-**5. Impact Social (Options 18-19) :**
-
-- Module accessibilité PMR complet
-- Performance et optimisation système
-
 ### 6.2 Dashboard Web Professionnel
 
 **Interface `web/index.html` - Application web responsive complète**
@@ -492,15 +393,6 @@ Interface console enrichie avec navigation intuitive structurée en 5 sections :
 - Tests API intégrés avec affichage des réponses
 - Cartes interactives avec contrôles avancés
 - Interface responsive optimisée mobile/desktop
-- Thème professionnel avec animations CSS3
-
-**Technologies utilisées :**
-
-- HTML5 sémantique avec accessibilité
-- CSS3 avec Grid/Flexbox et animations
-- JavaScript ES6 avec fetch API
-- Leaflet.js pour cartographie
-- Design system cohérent
 
 ---
 
@@ -510,7 +402,7 @@ Interface console enrichie avec navigation intuitive structurée en 5 sections :
 
 **Déséquilibres critiques identifiés :**
 
-L'analyse de 245,782 enregistrements révèle des disparités majeures :
+L'analyse de 245 782 enregistrements révèle des disparités majeures :
 
 **Lignes en surcharge :**
 
@@ -522,29 +414,22 @@ L'analyse de 245,782 enregistrements révèle des disparités majeures :
 
 - Lignes 5, 9, 11 : <40% d'occupation chronique
 - Potentiel de réallocation : 5 bus vers lignes surchargées
-- Économies possibles : 280,000 FCFA/semaine
+- Économies possibles : 280 000 FCFA/semaine
 
 **Patterns temporels asymétriques :**
 
 ```
 Distribution horaire fréquentation - Réseau complet
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-06h ████████████ 12.3% (30,234 passagers)
-07h ████████████████████ 23.4% (57,543 passagers) ← Pic matinal
-08h ███████████████ 18.1% (44,586 passagers)
-12h ██████████ 9.8% (24,087 passagers)
-17h ██████████████████████████ 28.1% (69,105 passagers) ← Pic vespéral
-18h ████████████████ 19.7% (48,459 passagers)
-19h ████████████ 13.2% (32,463 passagers)
+06h ████████████ 12.3% (30 234 passagers)
+07h ████████████████████ 23.4% (57 543 passagers) ← Pic matinal
+08h ███████████████ 18.1% (44 586 passagers)
+12h ██████████ 9.8% (24 087 passagers)
+17h ██████████████████████████ 28.1% (69 105 passagers) ← Pic vespéral
+18h ████████████████ 19.7% (48 459 passagers)
+19h ████████████ 13.2% (32 463 passagers)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
-
-**Inefficacités opérationnelles quantifiées :**
-
-- Surcapacité de 45% durant heures creuses (10h-16h)
-- Sous-desserte de 23% aux heures de pointe
-- Variabilité excessive : écart-type de 34% entre lignes
-- Potentiel d'optimisation : 425L carburant/jour économisables
 
 ### 7.2 Validation sur Données Réelles
 
@@ -552,15 +437,8 @@ Distribution horaire fréquentation - Réseau complet
 
 - 47 arrêts géolocalisés avec précision GPS (±3 mètres)
 - 12 lignes actives avec historique 6 mois complet
-- 245,782 enregistrements validés et nettoyés (2% de données aberrantes)
+- 245 782 enregistrements validés et nettoyés (2% de données aberrantes)
 - Couverture temporelle : 6 semaines continues sans interruption
-
-**Métriques de qualité des données :**
-
-- Complétude : 98.2% (4,423 enregistrements manquants comblés)
-- Cohérence temporelle : 99.7% (741 doublons supprimés)
-- Validité géographique : 100% (coordonnées dans périmètre Ouagadougou)
-- Intégrité référentielle : 99.1% (arrêts-lignes cohérents)
 
 ---
 
@@ -572,30 +450,23 @@ Distribution horaire fréquentation - Réseau complet
 
 **Optimisation carburant :**
 
-- Réduction consommation : 425L/jour → 320,000 FCFA/jour
+- Réduction consommation : 425L/jour → 320 000 FCFA/jour
 - Base calcul : 750 FCFA/L diesel
 - Économie annuelle : 116.8M FCFA
 
 **Optimisation ressources humaines :**
 
-- Réduction heures supplémentaires : 15h/jour → 90,000 FCFA/jour
-- Optimisation planning : -2 équipes heures creuses → 180,000 FCFA/jour
+- Réduction heures supplémentaires : 15h/jour → 90 000 FCFA/jour
+- Optimisation planning : -2 équipes heures creuses → 180 000 FCFA/jour
 - Économie annuelle : 98.6M FCFA
 
 **Maintenance préventive :**
 
-- Réduction pannes : -15% → 65,000 FCFA/jour
-- Optimisation kilométrage : -8% usure → 45,000 FCFA/jour
+- Réduction pannes : -15% → 65 000 FCFA/jour
+- Optimisation kilométrage : -8% usure → 45 000 FCFA/jour
 - Économie annuelle : 40.2M FCFA
 
 **Total économies annuelles : 255.6M FCFA**
-
-**Amélioration qualité de service (impact 50,000 usagers/jour) :**
-
-- Temps d'attente : -18% (2.2 minutes économisées)
-- Ponctualité : +23% (réduction retards 7.5 → 5.8 minutes)
-- Taux satisfaction estimé : +20% (enquêtes pilotes)
-- Attractivité transport public : +12% nouveaux usagers
 
 ### 8.2 Plan de Déploiement Opérationnel
 
@@ -610,15 +481,9 @@ Distribution horaire fréquentation - Réseau complet
       - Réallocation 5 bus vers corridors saturés
 
 2. **Formation équipes opérationnelles :**
-
       - Chauffeurs : techniques éco-conduite (20% économie carburant)
       - Dispatchers : utilisation logiciel d'optimisation
       - Maintenance : diagnostic prédictif véhicules
-
-3. **Équipement arrêts prioritaires :**
-      - 8 abribus arrêts stratégiques → 12M FCFA
-      - 12 éclairages sécurisés → 8M FCFA
-      - Signalétique améliorée → 3M FCFA
 
 **Investissement Phase 1 : 23M FCFA**
 **ROI attendu : 3.2 mois**
@@ -631,43 +496,17 @@ Distribution horaire fréquentation - Réseau complet
 
       - Installation 50 véhicules → 75M FCFA
       - Logiciel de suivi temps réel → 25M FCFA
-      - Formation utilisateurs → 5M FCFA
 
 2. **Application mobile usagers :**
-
       - Développement application Android/iOS → 40M FCFA
       - Intégration API temps réel → 15M FCFA
-      - Communication et adoption → 10M FCFA
-
-3. **Système paiement électronique :**
-      - Cartes magnétiques et lecteurs → 120M FCFA
-      - Infrastructure réseau → 30M FCFA
-      - Déploiement pilote → 20M FCFA
 
 **Investissement Phase 2 : 340M FCFA**
 **ROI attendu : 18 mois**
 
-#### Phase 3 - Innovation (6-18 mois)
-
-**Intelligence artificielle avancée :**
-
-1. **Prédiction temps réel :**
-
-      - Intégration données météo → 15M FCFA
-      - Algorithmes machine learning avancés → 25M FCFA
-      - Optimisation dynamique continue → 20M FCFA
-
-2. **Maintenance prédictive :**
-      - Capteurs IoT véhicules → 80M FCFA
-      - Plateforme analytics → 45M FCFA
-      - Formation techniciens → 10M FCFA
-
-**Investissement Phase 3 : 195M FCFA**
-**ROI attendu : 24 mois**
-
 ### 8.3 Analyse de Risques et Mitigation
 
-**Risques techniques identifiés :**
+**Risques identifiés :**
 
 **Risque élevé : Résistance au changement**
 
@@ -681,12 +520,6 @@ Distribution horaire fréquentation - Réseau complet
 - Impact : Réduction précision 15-20%
 - Mitigation : Validation croisée, nettoyage automatique
 
-**Risque faible : Pannes techniques**
-
-- Probabilité : 15%
-- Impact : Interruption service 2-4 heures
-- Mitigation : Redondance système, maintenance préventive, support technique
-
 ---
 
 ## 9. RETOURS D'EXPÉRIENCE ET APPRENTISSAGES
@@ -696,7 +529,7 @@ Distribution horaire fréquentation - Réseau complet
 **Expertise Julia approfondie :**
 
 - Écosystème DataFrames.jl pour traitement Big Data (245k+ enregistrements)
-- Performance exceptionnelle sur calculs intensifs (6,918 enreg/sec)
+- Performance exceptionnelle sur calculs intensifs (6 918 enreg/sec)
 - Intégration fluide avec technologies web (HTML5/CSS3/JavaScript)
 - Programmation fonctionnelle et orientée performance
 
@@ -707,13 +540,6 @@ Distribution horaire fréquentation - Réseau complet
 - Documentation systématique en français pour adoption locale
 - Gestion d'erreurs robuste avec suggestions de correction
 
-**Traitement de données réelles :**
-
-- 15% des données nécessitent nettoyage/validation automatique
-- Patterns inattendus révélés par visualisation ASCII avancée
-- Validation par experts métier indispensable (données SOTRACO)
-- Importance de la géolocalisation précise (±3 mètres GPS)
-
 ### 9.2 Collaboration en Binôme Efficace
 
 **Forces de la collaboration :**
@@ -722,21 +548,13 @@ Distribution horaire fréquentation - Réseau complet
 - Communication fluide malgré emplois du temps contraints
 - Résolution collaborative des conflits d'intégration modules
 - Respect mutuel des contributions et respect des échéances
-- Code reviews systématiques amélirant qualité globale
-
-**Défis techniques surmontés :**
-
-- Harmonisation des interfaces entre 19 modules interconnectés
-- Gestion de versions Git complexe avec développement parallèle
-- Équilibrage charge travail selon expertise individuelle
-- Validation croisée d'algorithmes d'optimisation complexes
-- Intégration interface web avec backend Julia
+- Code reviews systématiques améliorant qualité globale
 
 **Méthodes de travail optimisées :**
 
 - Code reviews obligatoires avant merge sur branche principale
 - Sessions de programmation en binôme pour parties critiques
-- Documentation partagée temps réel (Google Docs + GitHub)
+- Documentation partagée temps réel
 - Tests d'intégration quotidiens automatisés
 - Réunions hebdomadaires avec objectifs quantifiés
 
@@ -751,19 +569,11 @@ Distribution horaire fréquentation - Réseau complet
 - API REST permettant intégration systèmes existants
 - Performance validée sur hardware standard burkinabè
 
-**Faisabilité économique démontrée :**
-
-- ROI positif dès 6 mois (255.6M FCFA économies/an)
-- Investissement initial raisonnable (558M FCFA sur 3 phases)
-- Formation utilisateurs simplifiée par interface intuitive
-- Support technique local possible (expertise Julia acquise)
-
 **Extensibilité vers autres villes :**
 
 - Architecture prête pour Bobo-Dioulasso, Koudougou
 - Modules réutilisables pour différents types transport
 - Base solide pour smart city intégrée sahélienne
-- Référence pour coopération technique régionale
 
 ---
 
@@ -783,9 +593,6 @@ Classification automatique des arrêts selon importance stratégique. Heatmaps d
 **4. Accessibilité sociale intégrée :**
 Approche pionnière intégrant dès la conception l'accessibilité PMR et tarification équitable. Module complet avec budgétisation sur 5 ans.
 
-**5. Optimisation performance gros volumes :**
-Gestion optimisée de datasets >100k enregistrements avec techniques de partitionnement, cache intelligent et nettoyage automatique.
-
 ### 10.2 Contribution à la Recherche Transport
 
 **Avancées méthodologiques :**
@@ -794,13 +601,6 @@ Gestion optimisée de datasets >100k enregistrements avec techniques de partitio
 - Démonstration faisabilité Julia pour applications transport
 - Intégration réussie IA/optimisation/géolocalisation
 - Méthodologie d'analyse accessibilité PMR quantifiée
-
-**Publications potentielles :**
-
-1. "Optimisation multi-critères du transport urbain : cas de Ouagadougou"
-2. "Intelligence artificielle pour prédiction de demande en transport africain"
-3. "Accessibilité PMR et transport public : méthodologie d'évaluation"
-4. "Architecture logicielle modulaire pour systèmes transport intelligents"
 
 ### 10.3 Impact Sociétal Mesuré
 
@@ -813,10 +613,10 @@ Gestion optimisée de datasets >100k enregistrements avec techniques de partitio
 
 **Inclusion sociale renforcée :**
 
-- 24,500 personnes handicapées bénéficiaires potentielles
-- Tarification sociale pour 180,000 ménages précaires
+- 24 500 personnes handicapées bénéficiaires potentielles
+- Tarification sociale pour 180 000 ménages précaires
 - Réduction impact carbone : 767 tonnes CO2/an évitables
-- Amélioration qualité vie 500,000+ habitants
+- Amélioration qualité vie 500 000+ habitants
 
 ---
 
@@ -849,13 +649,6 @@ Gestion optimisée de datasets >100k enregistrements avec techniques de partitio
 - Satisfaction utilisateur : 8.2/10
 - Fonctionnalités les plus appréciées : optimisation automatique, cartes
 
-**Dashboard web :**
-
-- Navigation intuitive : 92% réussite sans formation
-- Responsive mobile : testé sur 5 devices Android
-- Temps de chargement : <3 secondes (connexion 4G Burkina)
-- Accessibilité : compatible lecteurs d'écran
-
 ### 11.3 Benchmarking Solutions Existantes
 
 **Comparaison avec solutions commerciales :**
@@ -876,7 +669,7 @@ Gestion optimisée de datasets >100k enregistrements avec techniques de partitio
 
 **Réalisations techniques validées :**
 
-- ✅ Système complet opérationnel (15,000+ lignes, 19 modules)
+- ✅ Système complet opérationnel (15 000+ lignes, 19 modules)
 - ✅ Analyses révélant insights actionnables (255.6M FCFA économies/an)
 - ✅ Algorithmes d'optimisation validés sur données réelles SOTRACO
 - ✅ Interface utilisateur intuitive et performante
@@ -894,7 +687,7 @@ Gestion optimisée de datasets >100k enregistrements avec techniques de partitio
 **Impacts mesurés dépassant les projections :**
 
 - Économies identifiées : 255.6M FCFA/an (vs 150M FCFA estimé)
-- Performance système : 6,918 enreg/sec (vs 3,000 attendu)
+- Performance système : 6 918 enreg/sec (vs 3 000 attendu)
 - Précision prédiction : 78.4% (vs 70% objectif)
 - Modules développés : 19 (vs 12 planifiés)
 
@@ -989,16 +782,16 @@ SOTRACO v2.0 - Benchmarks Système Complet
 ═══════════════════════════════════════════════════════════
 Configuration Test : Intel i5-8250U @ 1.60GHz, 8GB DDR4
 Système : Ubuntu 20.04 LTS, Julia 1.9.0
-Dataset : 245,782 enregistrements réels SOTRACO
+Dataset : 245 782 enregistrements réels SOTRACO
 
 Opération                    │ Temps    │ Débit       │ Mémoire
 ────────────────────────────┼─────────┼────────────┼─────────
-Chargement données CSV       │ 1.24s    │ 198,210/s  │ 187 MB
-Analyse fréquentation        │ 0.78s    │ 315,362/s  │ 45 MB
+Chargement données CSV       │ 1.24s    │ 198 210/s  │ 187 MB
+Analyse fréquentation        │ 0.78s    │ 315 362/s  │ 45 MB
 Optimisation 12 lignes       │ 3.42s    │ 3.5 L/s    │ 67 MB
-Génération carte Leaflet     │ 2.18s    │ 21,550/s   │ 89 MB
+Génération carte Leaflet     │ 2.18s    │ 21 550/s   │ 89 MB
 Prédictions IA (7 jours)     │ 4.67s    │ 450 pred/s │ 134 MB
-Export rapport complet       │ 1.94s    │ 7,700 L/s  │ 23 MB
+Export rapport complet       │ 1.94s    │ 7 700 L/s  │ 23 MB
 Tests automatisés (96)       │ 12.45s   │ 7.7 T/s    │ 156 MB
 ═══════════════════════════════════════════════════════════
 ```
@@ -1021,7 +814,7 @@ id,nom_ligne,origine,destination,distance_km,duree_trajet_min,tarif_fcfa,frequen
 3,"Université-Gare","Université","Gare routière",12.3,45,200,20,"Actif"
 ```
 
-**Format frequentation.csv (245,782 enregistrements) :**
+**Format frequentation.csv (245 782 enregistrements) :**
 
 ```csv
 id,date,heure,ligne_id,arret_id,montees,descentes,occupation_bus,capacite_bus
@@ -1061,9 +854,46 @@ POUBERE Abdourazakou: Interface web responsive et cartes
 OUEDRAOGO Lassina: Tests automatisés et benchmarking
 POUBERE Abdourazakou: Visualisations ASCII avancées
 [...] # 245 commits total sur 6 semaines
+```
 
-# Statistiques de code par développeur
-cloc src/ --by-file --csv | grep -E "(Lassina|Abdourazakou)"
+### Annexe E - Exemples d'Algorithmes Clés
+
+**Algorithme d'optimisation des fréquences :**
+
+```julia
+function optimiser_frequences(ligne::LigneBus, donnees_freq::Vector{FrequentationHoraire})
+    # Calcul facteur de demande pondéré
+    facteur_demande = calculer_facteur_demande(donnees_freq)
+
+    # Application contraintes opérationnelles
+    freq_min, freq_max = contraintes_operationnelles(ligne)
+
+    # Optimisation multi-critères
+    freq_optimale = minimiser_temps_attente(
+        facteur_demande,
+        ligne.capacite,
+        freq_min,
+        freq_max
+    )
+
+    return freq_optimale
+end
+```
+
+**Classification automatique des arrêts :**
+
+```julia
+function classifier_arret(score_importance, total_passagers, arret)
+    if score_importance >= 80 || total_passagers >= 800
+        return "hub_majeur"      # Couleur rouge
+    elseif score_importance >= 60 || total_passagers >= 400
+        return "station_importante"  # Couleur orange
+    elseif score_importance >= 40 || total_passagers >= 200
+        return "arret_standard"     # Couleur verte
+    else
+        return "arret_secondaire"   # Couleur bleue
+    end
+end
 ```
 
 ---

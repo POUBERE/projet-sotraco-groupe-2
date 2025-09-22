@@ -74,7 +74,7 @@ Le projet SOTRACO constitue un système avancé d'optimisation du réseau de tra
 
 ```bash
 # 1. Cloner le repository
-git clone https://github.com/votre-username/projet-sotraco-groupe-2.git
+git clone https://github.com/POUBERE/projet-sotraco-groupe-2.git
 cd projet-sotraco-groupe-2
 
 # 2. Installer les dépendances Julia
@@ -688,7 +688,7 @@ Notre système pose les bases pour :
 
 ```bash
 # Installation complète
-git clone https://github.com/votre-username/projet-sotraco-groupe-2.git
+git clone https://github.com/POUBERE/projet-sotraco-groupe-2.git
 cd projet-sotraco-groupe-2
 julia --project=. -e "using Pkg; Pkg.instantiate()"
 
@@ -919,12 +919,10 @@ Score performance global: 87.3/100
 - **OUEDRAOGO Lassina** - _Lead Optimisation_
 
      - 📧 Email : lassina.ouedraogo@univ-ouaga.bf
-     - 🔗 LinkedIn : [votre-profil]
      - 🎥 Vidéo démo : [lien-youtube-1]
 
 - **POUBERE Abdourazakou** - _Lead Analyse_
-     - 📧 Email : abdourazakou.poubere@univ-ouaga.bf
-     - 🔗 LinkedIn : [profil-partenaire]
+     - 📧 Email : abdourazakoupoubere@gmail.com
      - 🎥 Vidéo démo : [lien-youtube-2]
 
 ### Ressources Utiles
