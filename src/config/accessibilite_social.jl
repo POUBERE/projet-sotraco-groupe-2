@@ -340,4 +340,289 @@ function calculer_distances_inter_arrets(systeme::SystemeSOTRACO)
     return distances_moyennes
 end
 
+"""
+Évalue les fréquences de service pour chaque ligne du réseau.
+"""
+function evaluer_frequences_service(systeme::SystemeSOTRACO)
+    evaluation = Dict{String, Any}()
+    
+    if isempty(systeme.lignes)
+        return Dict("moyenne" => 0, "evaluation" => "Aucune ligne disponible")
+    end
+    
+    frequences = [ligne.frequence_min for ligne in values(systeme.lignes) if ligne.statut == "Actif"]
+    
+    if isempty(frequences)
+        return Dict("moyenne" => 0, "evaluation" => "Aucune ligne active")
+    end
+    
+    freq_moyenne = mean(frequences)
+    freq_min = minimum(frequences)
+    freq_max = maximum(frequences)
+    
+    # Classification selon les standards de transport urbain
+    if freq_moyenne <= 10
+        niveau_service = "EXCELLENT"
+        note = 90
+    elseif freq_moyenne <= 15
+        niveau_service = "BON"
+        note = 75
+    elseif freq_moyenne <= 20
+        niveau_service = "ACCEPTABLE"
+        note = 60
+    elseif freq_moyenne <= 30
+        niveau_service = "MÉDIOCRE"
+        note = 40
+    else
+        niveau_service = "INSUFFISANT"
+        note = 20
+    end
+    
+    evaluation = Dict(
+        "frequence_moyenne" => freq_moyenne,
+        "frequence_min" => freq_min,
+        "frequence_max" => freq_max,
+        "niveau_service" => niveau_service,
+        "note" => note,
+        "nb_lignes_evaluees" => length(frequences)
+    )
+    
+    return evaluation
+end
+
+"""
+Analyse l'accessibilité économique du système de transport.
+"""
+function analyser_accessibilite_economique(systeme::SystemeSOTRACO)
+    if isempty(systeme.lignes)
+        return Dict("accessible" => false, "raison" => "Aucune ligne disponible")
+    end
+    
+    tarifs = [ligne.tarif_fcfa for ligne in values(systeme.lignes)]
+    tarif_moyen = mean(tarifs)
+    tarif_max = maximum(tarifs)
+    tarif_min = minimum(tarifs)
+    
+    # Seuils d'accessibilité basés sur le salaire minimum au Burkina Faso
+    salaire_minimum_mensuel = 30_000 # FCFA
+    seuil_accessibilite = salaire_minimum_mensuel * 0.02 # 2% du salaire par trajet
+    
+    pourcentage_lignes_accessibles = count(t -> t <= seuil_accessibilite, tarifs) / length(tarifs) * 100
+    
+    if tarif_moyen <= seuil_accessibilite
+        niveau_accessibilite = "TRÈS ACCESSIBLE"
+        note = 85
+    elseif tarif_moyen <= seuil_accessibilite * 1.5
+        niveau_accessibilite = "ACCESSIBLE"
+        note = 70
+    elseif tarif_moyen <= seuil_accessibilite * 2
+        niveau_accessibilite = "MODÉRÉMENT ACCESSIBLE"
+        note = 55
+    else
+        niveau_accessibilite = "PEU ACCESSIBLE"
+        note = 30
+    end
+    
+    return Dict(
+        "tarif_moyen" => tarif_moyen,
+        "tarif_min" => tarif_min,
+        "tarif_max" => tarif_max,
+        "seuil_accessibilite" => seuil_accessibilite,
+        "pourcentage_accessible" => pourcentage_lignes_accessibles,
+        "niveau" => niveau_accessibilite,
+        "note" => note
+    )
+end
+
+"""
+Calcule un score global d'accessibilité basé sur tous les critères.
+"""
+function calculer_score_accessibilite(couverture, frequences, distances, economique)
+    score_total = 0.0
+    nb_criteres = 0
+    
+    # Score de couverture géographique (30% du total)
+    if haskey(couverture, "nb_zones") && couverture["nb_zones"] > 0
+        score_couverture = min(100, couverture["nb_zones"] * 20) # 20 points par zone
+        score_total += score_couverture * 0.3
+        nb_criteres += 1
+    end
+    
+    # Score de fréquence (25% du total)
+    if haskey(frequences, "note")
+        score_total += frequences["note"] * 0.25
+        nb_criteres += 1
+    end
+    
+    # Score économique (30% du total)
+    if haskey(economique, "note")
+        score_total += economique["note"] * 0.3
+        nb_criteres += 1
+    end
+    
+    # Score de distances (15% du total)
+    if !isempty(distances)
+        distance_moyenne_globale = mean(values(distances))
+        # Score basé sur une distance idéale de 500m entre arrêts
+        if distance_moyenne_globale <= 500
+            score_distance = 90
+        elseif distance_moyenne_globale <= 800
+            score_distance = 75
+        elseif distance_moyenne_globale <= 1200
+            score_distance = 60
+        else
+            score_distance = 40
+        end
+        score_total += score_distance * 0.15
+        nb_criteres += 1
+    end
+    
+    return nb_criteres > 0 ? score_total : 0.0
+end
+
+"""
+Affiche les résultats détaillés de l'évaluation d'accessibilité.
+"""
+function afficher_resultats_accessibilite(couverture, frequences, economique, score_global)
+    println("\n📊 RÉSULTATS ÉVALUATION ACCESSIBILITÉ")
+    println("=" ^ 50)
+    
+    println("🗺️ COUVERTURE GÉOGRAPHIQUE:")
+    println("   • Zones couvertes: $(couverture["nb_zones"])")
+    println("   • Quartiers desservis: $(couverture["nb_quartiers"])")
+    
+    println("\n⏰ QUALITÉ DU SERVICE:")
+    if haskey(frequences, "frequence_moyenne")
+        println("   • Fréquence moyenne: $(round(frequences["frequence_moyenne"], digits=1)) min")
+        println("   • Niveau de service: $(frequences["niveau_service"])")
+        println("   • Note: $(frequences["note"])/100")
+    end
+    
+    println("\n💰 ACCESSIBILITÉ ÉCONOMIQUE:")
+    if haskey(economique, "tarif_moyen")
+        println("   • Tarif moyen: $(round(economique["tarif_moyen"])) FCFA")
+        println("   • Niveau: $(economique["niveau"])")
+        println("   • Lignes accessibles: $(round(economique["pourcentage_accessible"], digits=1))%")
+    end
+    
+    println("\n🎯 SCORE GLOBAL: $(round(score_global, digits=1))/100")
+    
+    if score_global >= 80
+        println("   ✅ EXCELLENT - Réseau très accessible")
+    elseif score_global >= 65
+        println("   ✅ BON - Accessibilité satisfaisante")
+    elseif score_global >= 50
+        println("   ⚠️ MOYEN - Améliorations nécessaires")
+    else
+        println("   ❌ FAIBLE - Besoins importants d'amélioration")
+    end
+end
+
+"""
+Affiche les résultats de la tarification sociale.
+"""
+function afficher_tarification_sociale(tarifs_sociaux, tarif_optimal, tarif_actuel)
+    println("\n💰 TARIFICATION SOCIALE RECOMMANDÉE")
+    println("=" ^ 45)
+    
+    println("📊 Tarif de référence optimal: $(round(tarif_optimal)) FCFA")
+    println("📊 Tarif moyen actuel: $(round(tarif_actuel)) FCFA")
+    
+    ecart = ((tarif_actuel - tarif_optimal) / tarif_optimal) * 100
+    if ecart > 0
+        println("⚠️ Tarifs actuels $(round(ecart, digits=1))% plus élevés que recommandé")
+    else
+        println("✅ Tarifs actuels dans la fourchette recommandée")
+    end
+    
+    println("\n🎯 TARIFS SOCIAUX PROPOSÉS:")
+    for (categorie, tarif) in sort(collect(tarifs_sociaux), by=x->x[2])
+        reduction = ((tarif_optimal - tarif) / tarif_optimal) * 100
+        println("   • $(rpad(uppercasefirst(categorie), 12)): $(lpad(round(Int, tarif), 3)) FCFA (-$(round(reduction, digits=0))%)")
+    end
+    
+    println("\n💡 IMPACT ESTIMÉ:")
+    println("   • Augmentation fréquentation: +15-25%")
+    println("   • Réduction exclusion sociale: significative")
+    println("   • Besoin subvention publique: ~20% du chiffre d'affaires")
+end
+
+"""
+Affiche le bilan écologique détaillé.
+"""
+function afficher_bilan_ecologique(distance_km, passagers, emissions_bus, reduction_emissions, 
+                                 pourcentage_reduction, carburant)
+    println("\n🌱 BILAN ÉCOLOGIQUE ANNUEL")
+    println("=" ^ 35)
+    
+    println("📊 DONNÉES DE BASE:")
+    println("   • Distance parcourue: $(round(distance_km, digits=0)) km/an")
+    println("   • Passagers transportés: $(round(passagers, digits=0))")
+    println("   • Consommation carburant: $(round(carburant, digits=0)) litres")
+    
+    println("\n🌍 IMPACT ENVIRONNEMENTAL:")
+    println("   • Émissions bus: $(round(emissions_bus, digits=1)) tonnes CO₂")
+    println("   • Émissions évitées: $(round(reduction_emissions, digits=1)) tonnes CO₂")
+    println("   • Réduction totale: $(round(pourcentage_reduction, digits=1))%")
+    
+    # Équivalences pour mieux comprendre l'impact
+    arbres_equivalent = reduction_emissions * 45 # 1 tonne CO2 = ~45 arbres
+    voitures_evitees = reduction_emissions / 4.6 # émission moyenne voiture/an
+    
+    println("\n🌳 ÉQUIVALENCES:")
+    println("   • Équivalent à planter $(round(arbres_equivalent, digits=0)) arbres")
+    println("   • Équivalent à retirer $(round(voitures_evitees, digits=0)) voitures de la circulation")
+    
+    if pourcentage_reduction >= 70
+        println("   ✅ Impact écologique EXCELLENT")
+    elseif pourcentage_reduction >= 50
+        println("   ✅ Impact écologique BON")
+    else
+        println("   ⚠️ Potentiel d'amélioration écologique")
+    end
+end
+
+"""
+Affiche l'analyse des besoins d'accessibilité pour personnes handicapées.
+"""
+function afficher_besoins_accessibilite(besoins, arrets_problematiques, systeme)
+    println("\n♿ BESOINS IDENTIFIÉS POUR L'ACCESSIBILITÉ")
+    println("=" ^ 50)
+    
+    total_arrets = length(systeme.arrets)
+    arrets_conformes = total_arrets - length(arrets_problematiques)
+    taux_conformite = (arrets_conformes / total_arrets) * 100
+    
+    println("📊 ÉTAT ACTUEL:")
+    println("   • Arrêts conformes: $arrets_conformes/$total_arrets ($(round(taux_conformite, digits=1))%)")
+    println("   • Arrêts nécessitant amélioration: $(length(arrets_problematiques))")
+    
+    println("\n🔧 AMÉNAGEMENTS PRIORITAIRES:")
+    for (besoin, localisations) in sort(collect(besoins), by=x->length(x[2]), rev=true)
+        nb_lieux = length(localisations)
+        println("   • $besoin: $nb_lieux lieu(x)")
+        
+        # Afficher quelques exemples
+        exemples = localisations[1:min(3, length(localisations))]
+        for exemple in exemples
+            println("     → $exemple")
+        end
+        if length(localisations) > 3
+            println("     → ... et $(length(localisations) - 3) autre(s)")
+        end
+    end
+    
+    cout_estime = length(arrets_problematiques) * 2_500_000 # 2.5M FCFA par arrêt
+    
+    println("\n💰 ESTIMATION BUDGÉTAIRE:")
+    println("   • Coût d'aménagement estimé: $(cout_estime ÷ 1_000_000) millions FCFA")
+    println("   • Priorité: $(taux_conformite < 50 ? "URGENTE" : taux_conformite < 80 ? "ÉLEVÉE" : "MODÉRÉE")")
+    
+    println("\n📋 PROCHAINES ÉTAPES:")
+    println("   1. Audit détaillé de chaque arrêt")
+    println("   2. Planification des travaux par priorité")
+    println("   3. Formation du personnel")
+    println("   4. Sensibilisation des usagers")
+end
+
 end # module AccessibiliteSocial

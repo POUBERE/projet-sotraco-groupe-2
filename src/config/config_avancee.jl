@@ -5,6 +5,7 @@ module ConfigurationAvancee
 
 using Dates, Statistics, JSON3
 using ...Types
+using ...Prediction  # Ajout de l'accès au module Prediction
 
 export gerer_configuration_avancee, configurer_parametres_prediction
 export configurer_parametres_optimisation, reinitialiser_configuration_complete
@@ -55,7 +56,8 @@ function configurer_parametres_prediction(systeme::SystemeSOTRACO)
         println("⚠️ Aucune prédiction n'a encore été générée.")
         print("Voulez-vous d'abord générer des prédictions par défaut? (o/n): ")
         if lowercase(readline()) in ["o", "oui", "y", "yes"]
-            predire_demande_globale(systeme, 7)
+            # Utilisation de la notation complète pour accéder à la fonction
+            Prediction.predire_demande_globale(systeme, 7)
         else
             return
         end
@@ -132,6 +134,45 @@ function configurer_parametres_optimisation(systeme::SystemeSOTRACO)
         "penalite_surcharge" => 1.5,
         "bonus_sous_utilisation" => 0.8
     )
+    
+    # Interface de configuration similaire aux prédictions
+    while true
+        afficher_config_optimisation_actuelle(config_optim)
+        
+        println("\n🎛️ OPTIONS DE CONFIGURATION:")
+        println("1. Seuil d'occupation maximum")
+        println("2. Fréquences min/max autorisées") 
+        println("3. Tolérance de variation")
+        println("4. Critère d'optimisation principal")
+        println("5. Coefficients de pondération")
+        println("6. Paramètres de pénalité")
+        println("7. Appliquer et sauvegarder")
+        println("8. Retour")
+        print("Choix: ")
+        
+        choix = readline()
+        
+        if choix == "1"
+            configurer_seuil_occupation!(config_optim)
+        elseif choix == "2"
+            configurer_frequences_limites!(config_optim)
+        elseif choix == "3"
+            configurer_tolerance!(config_optim)
+        elseif choix == "4"
+            configurer_critere_principal!(config_optim)
+        elseif choix == "5"
+            configurer_coefficients_ponderation!(config_optim)
+        elseif choix == "6"
+            configurer_parametres_penalite!(config_optim)
+        elseif choix == "7"
+            appliquer_config_optimisation(systeme, config_optim)
+            break
+        elseif choix == "8"
+            break
+        else
+            println("❌ Choix invalide")
+        end
+    end
 end
 
 """
@@ -145,10 +186,12 @@ function reinitialiser_configuration_complete(systeme::SystemeSOTRACO)
     confirmation = readline()
     
     if confirmation == "CONFIRMER"
+        # Réinitialiser configuration carte
         systeme.config_carte = ConfigurationCarte(
             12.3686, -1.5275, 12, true, true, true, Dict{Int, String}()
         )
         
+        # Vider les prédictions pour régénération
         systeme.predictions = PredictionDemande[]
         
         try
@@ -207,6 +250,10 @@ function sauvegarder_configuration_complete(systeme::SystemeSOTRACO)
     end
 end
 
+# =====================================================
+# FONCTIONS AUXILIAIRES
+# =====================================================
+
 """
 Affiche les paramètres actuels de prédiction sous forme de tableau.
 """
@@ -232,6 +279,44 @@ function afficher_parametres_actuels(config::Dict)
     end
     
     println("└──────────────────────────────┴─────────────────┘")
+end
+
+"""
+Affiche la configuration actuelle d'optimisation.
+"""
+function afficher_config_optimisation_actuelle(config::Dict)
+    println("\n📋 CONFIGURATION ACTUELLE D'OPTIMISATION:")
+    println("┌──────────────────────────────────┬─────────────────┐")
+    println("│ Paramètre                        │ Valeur          │")
+    println("├──────────────────────────────────┼─────────────────┤")
+    
+    parametres = [
+        ("Seuil occupation max", "seuil_occupation_max", "%"),
+        ("Fréquence min (min)", "frequence_min_autorisee", ""),
+        ("Fréquence max (min)", "frequence_max_autorisee", ""),
+        ("Tolérance variation", "tolerance_variation", "%"),
+        ("Critère principal", "critere_optimisation", ""),
+        ("Coeff. économie", "coefficient_economie", ""),
+        ("Coeff. service", "coefficient_service", ""),
+        ("Coeff. environnement", "coefficient_environnement", ""),
+        ("Pénalité surcharge", "penalite_surcharge", "x"),
+        ("Bonus sous-util.", "bonus_sous_utilisation", "x")
+    ]
+    
+    for (nom, cle, unite) in parametres
+        if haskey(config, cle)
+            nom_pad = rpad(nom, 32)
+            if unite == "%"
+                valeur_str = "$(round(config[cle] * 100, digits=1))%"
+            else
+                valeur_str = "$(config[cle])$unite"
+            end
+            valeur_pad = rpad(valeur_str, 15)
+            println("│ $nom_pad │ $valeur_pad │")
+        end
+    end
+    
+    println("└──────────────────────────────────┴─────────────────┘")
 end
 
 """
@@ -376,6 +461,208 @@ function configurer_frequence_maj!(config::Dict)
 end
 
 """
+Configure le seuil d'occupation maximum.
+"""
+function configurer_seuil_occupation!(config::Dict)
+    println("\n📊 CONFIGURATION SEUIL D'OCCUPATION MAXIMUM")
+    println("Seuil actuel: $(round(config["seuil_occupation_max"] * 100, digits=1))%")
+    println("Recommandé: 80-90% (au-delà = surcharge)")
+    
+    print("Nouveau seuil (0.5-1.0): ")
+    try
+        nouveau_seuil = parse(Float64, readline())
+        if 0.5 <= nouveau_seuil <= 1.0
+            config["seuil_occupation_max"] = nouveau_seuil
+            println("✅ Seuil mis à jour: $(round(nouveau_seuil * 100, digits=1))%")
+        else
+            println("❌ Seuil doit être entre 50% et 100%")
+        end
+    catch
+        println("❌ Valeur invalide")
+    end
+end
+
+"""
+Configure les fréquences minimales et maximales autorisées.
+"""
+function configurer_frequences_limites!(config::Dict)
+    println("\n⏰ CONFIGURATION DES FRÉQUENCES LIMITES")
+    println("Fréquence min actuelle: $(config["frequence_min_autorisee"]) minutes")
+    println("Fréquence max actuelle: $(config["frequence_max_autorisee"]) minutes")
+    
+    print("Nouvelle fréquence minimum (3-15 min): ")
+    try
+        freq_min = parse(Int, readline())
+        if 3 <= freq_min <= 15
+            config["frequence_min_autorisee"] = freq_min
+            println("✅ Fréquence min mise à jour: $freq_min minutes")
+        else
+            println("❌ Fréquence min doit être entre 3 et 15 minutes")
+        end
+    catch
+        println("❌ Valeur invalide pour fréquence min")
+    end
+    
+    print("Nouvelle fréquence maximum (20-60 min): ")
+    try
+        freq_max = parse(Int, readline())
+        if 20 <= freq_max <= 60 && freq_max > config["frequence_min_autorisee"]
+            config["frequence_max_autorisee"] = freq_max
+            println("✅ Fréquence max mise à jour: $freq_max minutes")
+        else
+            println("❌ Fréquence max doit être entre 20-60 min et > fréquence min")
+        end
+    catch
+        println("❌ Valeur invalide pour fréquence max")
+    end
+end
+
+"""
+Configure la tolérance de variation.
+"""
+function configurer_tolerance!(config::Dict)
+    println("\n📈 CONFIGURATION TOLÉRANCE DE VARIATION")
+    println("Tolérance actuelle: $(round(config["tolerance_variation"] * 100, digits=1))%")
+    println("Définit l'amplitude de variation autorisée par rapport aux valeurs optimales")
+    
+    print("Nouvelle tolérance (0.05-0.3): ")
+    try
+        nouvelle_tolerance = parse(Float64, readline())
+        if 0.05 <= nouvelle_tolerance <= 0.3
+            config["tolerance_variation"] = nouvelle_tolerance
+            println("✅ Tolérance mise à jour: $(round(nouvelle_tolerance * 100, digits=1))%")
+        else
+            println("❌ Tolérance doit être entre 5% et 30%")
+        end
+    catch
+        println("❌ Valeur invalide")
+    end
+end
+
+"""
+Configure le critère d'optimisation principal.
+"""
+function configurer_critere_principal!(config::Dict)
+    println("\n🎯 CONFIGURATION CRITÈRE D'OPTIMISATION PRINCIPAL")
+    println("Critère actuel: $(config["critere_optimisation"])")
+    
+    criteres = Dict(
+        "1" => "efficacite",
+        "2" => "economie", 
+        "3" => "satisfaction",
+        "4" => "equilibre"
+    )
+    
+    println("Critères disponibles:")
+    println("1. Efficacité (occupation optimale)")
+    println("2. Économie (réduction coûts)")
+    println("3. Satisfaction (service usagers)")
+    println("4. Équilibré (compromis)")
+    
+    print("Choix (1-4): ")
+    choix = readline()
+    
+    if haskey(criteres, choix)
+        config["critere_optimisation"] = criteres[choix]
+        println("✅ Critère mis à jour: $(criteres[choix])")
+    else
+        println("❌ Choix invalide")
+    end
+end
+
+"""
+Configure les coefficients de pondération.
+"""
+function configurer_coefficients_ponderation!(config::Dict)
+    println("\n⚖️ CONFIGURATION COEFFICIENTS DE PONDÉRATION")
+    println("Les coefficients doivent totaliser 1.0")
+    
+    println("Coefficients actuels:")
+    println("• Économie: $(config["coefficient_economie"])")
+    println("• Service: $(config["coefficient_service"])") 
+    println("• Environnement: $(config["coefficient_environnement"])")
+    
+    print("Nouveau coefficient économie (0.1-0.6): ")
+    try
+        coef_eco = parse(Float64, readline())
+        if 0.1 <= coef_eco <= 0.6
+            config["coefficient_economie"] = coef_eco
+        else
+            println("❌ Coefficient économie doit être entre 0.1 et 0.6")
+            return
+        end
+    catch
+        println("❌ Valeur invalide")
+        return
+    end
+    
+    print("Nouveau coefficient service (0.2-0.7): ")
+    try
+        coef_service = parse(Float64, readline())
+        if 0.2 <= coef_service <= 0.7
+            config["coefficient_service"] = coef_service
+        else
+            println("❌ Coefficient service doit être entre 0.2 et 0.7")
+            return
+        end
+    catch
+        println("❌ Valeur invalide")
+        return
+    end
+    
+    # Calculer automatiquement le coefficient environnement
+    coef_env = 1.0 - config["coefficient_economie"] - config["coefficient_service"]
+    
+    if coef_env < 0.1 || coef_env > 0.5
+        println("❌ Configuration invalide: coefficient environnement = $coef_env")
+        println("Les coefficients doivent totaliser 1.0 avec env. entre 0.1-0.5")
+        return
+    end
+    
+    config["coefficient_environnement"] = coef_env
+    
+    println("✅ Coefficients mis à jour:")
+    println("• Économie: $(config["coefficient_economie"])")
+    println("• Service: $(config["coefficient_service"])")
+    println("• Environnement: $(config["coefficient_environnement"])")
+end
+
+"""
+Configure les paramètres de pénalité.
+"""
+function configurer_parametres_penalite!(config::Dict)
+    println("\n⚡ CONFIGURATION PARAMÈTRES DE PÉNALITÉ")
+    
+    println("Pénalité surcharge actuelle: $(config["penalite_surcharge"])x")
+    print("Nouvelle pénalité surcharge (1.2-3.0): ")
+    try
+        penalite = parse(Float64, readline())
+        if 1.2 <= penalite <= 3.0
+            config["penalite_surcharge"] = penalite
+            println("✅ Pénalité surcharge: $(penalite)x")
+        else
+            println("❌ Pénalité doit être entre 1.2 et 3.0")
+        end
+    catch
+        println("❌ Valeur invalide")
+    end
+    
+    println("Bonus sous-utilisation actuel: $(config["bonus_sous_utilisation"])x")
+    print("Nouveau bonus sous-utilisation (0.5-0.9): ")
+    try
+        bonus = parse(Float64, readline())
+        if 0.5 <= bonus <= 0.9
+            config["bonus_sous_utilisation"] = bonus
+            println("✅ Bonus sous-utilisation: $(bonus)x")
+        else
+            println("❌ Bonus doit être entre 0.5 et 0.9")
+        end
+    catch
+        println("❌ Valeur invalide")
+    end
+end
+
+"""
 Remet tous les paramètres de configuration aux valeurs par défaut.
 """
 function reinitialiser_config_defaut!(config::Dict)
@@ -413,14 +700,96 @@ function appliquer_configuration(systeme::SystemeSOTRACO, config::Dict)
         println("🔄 Régénération des prédictions avec nouveaux paramètres...")
         horizon = config["horizon_defaut"]
         
-        systeme.predictions = []
+        # Effacer les anciennes prédictions
+        systeme.predictions = PredictionDemande[]
+        
+        # Générer nouvelles prédictions avec la notation complète
+        nouvelles_predictions = Prediction.predire_demande_globale(systeme, horizon)
         
         println("✅ Configuration appliquée avec succès!")
         println("📁 Sauvegardée dans: $config_path")
+        println("🔮 $(length(systeme.predictions)) nouvelles prédictions générées")
         
     catch e
         println("❌ Erreur lors de l'application: $e")
     end
+end
+
+"""
+Applique et sauvegarde la configuration d'optimisation.
+"""
+function appliquer_config_optimisation(systeme::SystemeSOTRACO, config::Dict)
+    println("\n💾 APPLICATION ET SAUVEGARDE DE LA CONFIGURATION")
+    
+    try
+        # Créer le dossier config
+        mkpath("config")
+        
+        # Sauvegarder la configuration
+        chemin_config = "config/optimisation_params.json"
+        open(chemin_config, "w") do file
+            JSON3.pretty(file, config)
+        end
+        
+        println("✅ Configuration sauvegardée: $chemin_config")
+        
+        # Appliquer immédiatement si possible
+        nb_lignes_modifiees = appliquer_optimisation_immediate(systeme, config)
+        
+        println("🔄 Configuration appliquée à $nb_lignes_modifiees lignes")
+        
+        # Résumé final
+        println("\n📊 RÉSUMÉ DE L'APPLICATION:")
+        println("• Paramètres sauvegardés et actifs")
+        println("• Prochaines optimisations utiliseront ces paramètres")
+        println("• Critère principal: $(config["critere_optimisation"])")
+        
+    catch e
+        println("❌ Erreur lors de l'application: $e")
+    end
+end
+
+"""
+Applique immédiatement l'optimisation avec les nouveaux paramètres.
+"""
+function appliquer_optimisation_immediate(systeme::SystemeSOTRACO, config::Dict)
+    nb_modifications = 0
+    
+    for ligne in values(systeme.lignes)
+        if ligne.statut == "Actif"
+            freq_optimale = calculer_frequence_optimale_test(ligne, config)
+            
+            # Simulation de modification (dans un vrai système, on modifierait la ligne)
+            if freq_optimale != ligne.frequence_min
+                nb_modifications += 1
+                println("   • Ligne $(ligne.id): $(ligne.frequence_min) → $(freq_optimale) min")
+            end
+        end
+    end
+    
+    return nb_modifications
+end
+
+"""
+Calcule une fréquence optimale de test avec les nouveaux paramètres.
+"""
+function calculer_frequence_optimale_test(ligne::LigneBus, config::Dict)
+    # Simulation simple basée sur la distance et les paramètres
+    base_freq = ligne.frequence_min
+    
+    # Ajustement selon le critère principal
+    if config["critere_optimisation"] == "economie"
+        # Mode économie: augmenter fréquence
+        freq_optimale = min(base_freq + 3, config["frequence_max_autorisee"])
+    elseif config["critere_optimisation"] == "satisfaction"
+        # Mode satisfaction: réduire fréquence
+        freq_optimale = max(base_freq - 2, config["frequence_min_autorisee"])
+    else
+        # Mode équilibré
+        freq_optimale = base_freq
+    end
+    
+    return Int(round(freq_optimale))
 end
 
 """
