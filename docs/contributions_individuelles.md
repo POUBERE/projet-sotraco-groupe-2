@@ -15,7 +15,7 @@ Le projet SOTRACO constitue un système d'optimisation du transport public déve
 ### Membre 1 : OUEDRAOGO Lassina
 
 - **Nom complet :** OUEDRAOGO Lassina
-- **Email :** lassinaouedraogo@gmail.com
+- **Email :** lassinadekatabtenga@gmail.com
 - **Rôle principal :** Architecte système et optimisation
 - **Temps investi :** 72 heures
 
