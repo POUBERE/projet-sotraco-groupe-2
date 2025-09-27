@@ -730,7 +730,7 @@ docker run -p 8081:8081 sotraco
 
 # Ou directement sur serveur Ubuntu
 sudo apt install julia
-git clone [repository]
+git clone https://github.com/POUBERE/projet-sotraco-groupe-2.git
 cd projet-sotraco
 julia --project=. -e "using Pkg; Pkg.instantiate()"
 nohup julia --project=. src/main.jl --api-only &
@@ -918,7 +918,7 @@ Score performance global: 87.3/100
 
 - **OUEDRAOGO Lassina** - _Lead Optimisation_
 
-     - 📧 Email : lassinaouedraogo@gmail.com
+     - 📧 Email : lassinadekatabtenga@gmail.com
      - 🎥 Vidéo démo : [lien-youtube-1]
 
 - **POUBERE Abdourazakou** - _Lead Analyse_
