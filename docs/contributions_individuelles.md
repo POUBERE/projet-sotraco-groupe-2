@@ -418,14 +418,14 @@ Le projet SOTRACO constitue un système d'optimisation du transport public déve
 
 ```
 Membre 1 (OUEDRAOGO Lassina):
-- Commits: 167 commits (techniques, architecture, optimisation)
+- Commits: +20 commits (techniques, architecture, optimisation)
 - Insertions: 1,850 lignes (modules core, API, optimisation)
 - Deletions: 380 lignes (refactoring, optimisation)
 - Files changed: 51 fichiers (architecture, tests, infrastructure)
 - Spécialisation: Infrastructure technique, algorithmes, API REST
 
 Membre 2 (POUBERE Abdourazakou):
-- Commits: 178 commits (analyses, interfaces, impact social)
+- Commits: +20 commits (analyses, interfaces, impact social)
 - Insertions: 1,850 lignes (analyses, accessibilité, performance, UI)
 - Deletions: 295 lignes (optimisation, refactoring)
 - Files changed: 52 fichiers (modules métier, config, interfaces)

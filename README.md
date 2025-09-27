@@ -918,12 +918,12 @@ Score performance global: 87.3/100
 
 - **OUEDRAOGO Lassina** - _Lead Optimisation_
 
-     - 📧 Email : lassina.ouedraogo@univ-ouaga.bf
+     - 📧 Email : lassinaouedraogo@gmail.com
      - 🎥 Vidéo démo : [lien-youtube-1]
 
 - **POUBERE Abdourazakou** - _Lead Analyse_
      - 📧 Email : abdourazakoupoubere@gmail.com
-     - 🎥 Vidéo démo : [lien-youtube-2]
+     - 🎥 Vidéo démo : https://drive.google.com/file/d/1yWbQBtXb5cha7_-Y6JLdI7cY647kiPh7/view?usp=sharing
 
 ### Ressources Utiles
 
@@ -1015,7 +1015,7 @@ _Développé avec passion pour améliorer la mobilité urbaine à Ouagadougou et
 ---
 
 **🔗 Liens Rapides :**  
-[🎥 Vidéo Démo Lassina](https://youtube.com/watch?v=votre-lien-1) | [🎥 Vidéo Démo Abdourazakou](https://youtube.com/watch?v=votre-lien-2) | [📊 Rapport PDF](docs/rapport/rapport_final.pdf) | [🗺️ Carte Interactive](web/carte_interactive.html) | [🌐 API Docs](http://127.0.0.1:8081)
+[🎥 Vidéo Démo Lassina](https://youtube.com/watch?v=votre-lien-1) | [🎥 Vidéo Démo Abdourazakou](https://drive.google.com/file/d/1yWbQBtXb5cha7_-Y6JLdI7cY647kiPh7/view?usp=sharing) | [📊 Rapport PDF](docs/rapport/rapport_final.pdf) | [🗺️ Carte Interactive](web/carte_interactive.html) | [🌐 API Docs](http://127.0.0.1:8081)
 
 ---
 
